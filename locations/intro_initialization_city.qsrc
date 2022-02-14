@@ -1,9 +1,16 @@
-# intro_initialization
+# intro_initialization_city
 !!*************************
 !!	Final Initializations
 !!	Top area for things that need to be done before setting the variables for either start
-year = 2016
 
+day = 21
+month = 8
+year = 2017
+
+birthyear = 1999
+birthmonth = 4
+birthday = 1
+	
 BDSMfilm = 0
 pornstudio = 0
 pfilmSTOP = 0
@@ -64,29 +71,14 @@ gs 'telefon', 'setup'
 
 VersionCheck = 5030
 
-if $start = 'city':
-	birthyear = year - age
-	birthmonth = 4
-	birthday = 1
-	pcs_dob = birthyear * 10000
-	pcs_dob += (birthmonth * 100)
-	pcs_dob += birthday
-else
+pcs_dob = birthyear * 10000
+pcs_dob += (birthmonth * 100)
+pcs_dob += birthday
 
-	pcs_dob = birthyear * 10000
-	pcs_dob += (birthmonth * 100)
-	pcs_dob += birthday
+age = year - ((pcs_dob - (pcs_dob mod 10000)) / 10000)
+if ((month * 100) + day) < pcs_dob mod 10000: age -= 1
 
-	age = year - ((pcs_dob - (pcs_dob mod 10000)) / 10000)
-	if ((month * 100) + day) < pcs_dob mod 10000: age -= 1
-		
-end
-
-if age < 17:
-	vidage = age
-else
-	vidage = age - 1
-end
+vidage = age - 1
 
 vidageday = 300
 
@@ -101,7 +93,7 @@ nathcol = pcs_haircol
 pcs_pubecol = pcs_haircol & pcs_pubecol[1] = 1
 oldsavepcs_haircol = 1
 
-gs 'body', 'initial'
+gs 'body_shape', 'initial'
 
 !! Adding underwear and default shoes and assigning them
 
@@ -119,27 +111,19 @@ if $ARGS[1] ! 'CSB' and goth_clothing ! 1:
 end
 
 !!	Starting clothing set
-if $start_type = 'city':
-	cheap_panties[12] = 1
-	cheap_bras[12] = 1
-	$pantyworntype = 'cheap'
-	pantywornnumber = 12
-	$braworntype = 'cheap'
-	brawornnumber = 12
-	gm_outfits[50] = 1
-	gm_outfits_h[50] = 100
-	gm_outfits_b[50] = pcs_hips
-	danilovich_outfits[81] = 1
-	danilovich_outfits_h[81] = 100
-	gm_dress[11] = 1
-	gm_dress_h[11] = 100
-	gm_dress_b[11] = pcs_hips
-	danilovich_swimsuit[3] = 1
-	danilovich_swimsuit_h[3] = 60
-	danilovich_swimsuit_b[3] = pcs_hips
-	sportsclothingnumber = 81
-	gs 'clothing', 'wear', 'gm_dress', 11
-elseif goth_clothing = 1:
+cheap_panties[12] = 1
+cheap_bras[12] = 1
+danilovich_outfits[81] = 1
+danilovich_outfits_h[81] = 100
+danilovich_shoe[21] = 1
+gm_shoe[9] = 1
+gm_outfits[30] = 1
+gm_outfits_h[30] = 100
+gm_outfits_b[30] = pcs_hips
+cats_dress[1] = 1
+cats_dress_h[1] = 100
+cats_dress_b[1] = pcs_hips
+if goth_clothing = 1:
 	kats_panties[28] = 1
 	kats_bras[28] = 1
 	$pantyworntype = 'kats'
@@ -160,27 +144,6 @@ elseif goth_clothing = 1:
 	bomba_outfits_b[37] = pcs_hips
 	sportsclothingnumber = 91
 	gs 'clothing', 'wear', 'bomba_outfits', 37
-elseif $ARGS[1] = 'CSB':
-	cheap_panties[12] = 1
-	cheap_bras[12] = 1
-	$pantyworntype = 'cheap'
-	pantywornnumber = 12
-	$braworntype = 'cheap'
-	brawornnumber = 12
-	danilovich_outfits[81] = 1
-	danilovich_outfits_h[81] = 100
-	danilovich_shoe[21] = 1
-	gm_shoe[9] = 1
-	shoewornnumber = 9
-	$shoeworntype = 'gm'
-	gm_outfits[30] = 1
-	gm_outfits_h[30] = 100
-	gm_outfits_b[30] = pcs_hips
-	cats_dress[1] = 1
-	cats_dress_h[1] = 100
-	cats_dress_b[1] = pcs_hips
-	sportsclothingnumber = 81
-	gs 'clothing', 'wear', 'cats_dress', 1
 elseif pcs_inhib < 5:
 	gm_outfits[30] = 1
 	gm_outfits_h[30] = 100
@@ -316,73 +279,6 @@ elseif swim_start = 1:
 	danilovich_swimsuit_b[1] = pcs_hips
 end
 
-!!setting default danilovich outfit and setting coats
-if school_clothing = 1:
-	killvar 'school_clothing'
-	bomba_outfits[29] = 1
-	bomba_outfits_h[29] = 120
-	bomba_outfits_b[29] = pcs_hips
-	sport_bras[3] = 1
-	sport_brasS[3] = 0
-	$sportsbratype = 'sport'
-	sportsbranumber = 3
-	sport_panties[3] = 1
-	sport_pantiesS[3] = 0
-	$sportspantytype = 'sport'
-	sportspantynumber = 3
-	bomba_coats[19] = 1
-	bomba_coats_h[19] = 200
-	$coatworntype = 'bomba'
-	coatwornnumber = 19
-	$sportscoattype = 'bomba'
-	sportscoatnumber = 19
-else
-	gm_coats[12] = 1
-	gm_coats_h[12] = 200
-	$coatworntype = 'gm'
-	coatwornnumber = 12
-	$sportscoattype = 'gm'
-	sportscoatnumber = 12
-	sport_bras[1] = 1
-	sport_brasS[1] = 0
-	$sportsbratype = 'sport'
-	sportsbranumber = 1
-	sport_panties[1] = 1
-	sport_pantiesS[1] = 0
-	$sportspantytype = 'sport'
-	sportspantynumber = 1
-	if school_clothing = 2:
-		gm_school[49] = 1
-		gm_school_h[49] = 120
-		gm_school_b[49] = pcs_hips
-	elseif school_clothing = 3:
-		gm_school[25] = 1
-		gm_school_h[25] = 120
-		gm_school_b[25] = pcs_hips
-	elseif school_clothing = 4:
-		dolls_dress[40] = 1
-		dolls_dress_h[40] = 120
-		dolls_dress_b[40] = pcs_hips
-	elseif school_clothing = 5:
-		gm_school[37] = 1
-		gm_school_h[37] = 120
-		gm_school_b[37] = pcs_hips
-	elseif school_clothing = 6:
-		gm_school[4] = 1
-		gm_school_h[4] = 120
-		gm_school_b[4] = pcs_hips
-	elseif school_clothing = 7:
-		gm_school[17] = 1
-		gm_school_h[17] = 120
-		gm_school_b[17] = pcs_hips
-		danilovich_outfits[65] = 1
-		danilovich_outfits_h[65] = 100			
-		sportsclothingnumber = 65
-		danilovich_shoe[17] = 1
-		danilovich_shoe[21] = 0
-	end
-	killvar 'school_clothing'
-end
 if danilovich_shoe[17] = 1:
 	sportsshoenumber = 17
 else
@@ -483,5 +379,5 @@ gs 'stat'
 showstat 0
 showobjs 0
 
---- intro_initialization ---------------------------------
+--- intro_initialization_city ---------------------------------
 
