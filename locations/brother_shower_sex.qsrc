@@ -1,7 +1,18 @@
-# brother_voyeur_sex
+# brother_shower_sex
+
+if $ARGS[0] = 'sex_menu':
+!!	act'Jerk him off':gt'brother_shower_sex', 'mutual_masturbation'
+	act'Blow him':gt'brother_shower_sex', 'brother_shower_bj'
+	act'Fuck him':gt'brother_shower_sex', 'brother_shower_fuck'
+	act'Offer him your ass':gt'brother_shower_sex','brother_shower_anal'
+end
+
+if $ARGS[0] = 'mutual_masturbation':
+	'<center><video autoplay loop src="images/shared/sex/shower/fun2.mp4"></center>'
+end
 
 if $ARGS[0] = 'brother_shower_bj':
-	gs 'boystat','A34'
+	gs 'boystat', 'A34'
 	npc_rel['A34'] += 3
 	brotherbj += 1
 	brothershowerbj = daystart
@@ -19,15 +30,13 @@ if $ARGS[0] = 'brother_shower_bj':
 			gs 'cum_call', 'mouth', 'A34', 1
 			brotherbjcomment = rand(1,2)
 			gs 'stat'
-
-			gt'brother_voyeur_sex','shower_swallow'
+			gt'brother_shower_sex', 'shower_swallow'
 		else
 			*nl
 			'"Hey <<$pcs_nickname>>," he says through grunts. "I''m gonna cum soon. Can I cum on your face?"'
 			act'Ignore him and keep sucking':
 				cla
 				gs 'cum_call', 'mouth_swallow', 'A34', 1
-				gs 'arousal', 'end'
 				gs 'stat'
 				*nl
 				'Despite his pleas to let him blow his load on your face, you keep sucking until you taste hot liquid spilling into your mouth.'
@@ -43,7 +52,7 @@ if $ARGS[0] = 'brother_shower_bj':
 						'"Sorry Kolka, I just couldn''t help myself! Blowing you was too much fun and I didn''t want to stop." You keep licking and sucking on his tip as if to make your point. "I hope you''ll forgive me."'
 						'"Okay, fine... " He''s still clearly disappointed but he nods anyways. "But next time I want to cum on your face!"'
 						'"Maybe," you say with is what is probably a very frustrating wink.'
-						act'Finish showering together':gt'brother_voyeur','brother_shower_end'
+						gs'brother_shower_sex','ending_route_routine'
 					end
 
 					act'But I just washed my face':
@@ -57,7 +66,7 @@ if $ARGS[0] = 'brother_shower_bj':
 							'"Cum is hard to clean off! Even in the shower! It''s all sticky and gets everywhere. Even if you wipe it off your face, it gets on your hands, and then you have to be careful to get it all off before you run it through your hair."'
 							'Kolka opens his mouth to say something but nothing comes out. Guess he thought better of it.'
 							'"Hrmph! Always asking to cum on a girl''s face, never thinking about what a mess it makes or the trouble it causes for her! Boys!"'
-							act'Finish showering together':gt'brother_voyeur','brother_shower_end'
+							gs'brother_shower_sex','ending_route_routine'
 						end
 
 						act'Cum is still dirty':
@@ -67,7 +76,7 @@ if $ARGS[0] = 'brother_shower_bj':
 							'"It''s not dirty! Besides, I hear that cum is good for a girl''s skin. You should be <i>asking</i> me to cum on your face!"'
 							'"Pfft~!" You roll your eyes. "And where did you hear that? From some porno you were watching with your friends?"'
 							'"No!" he says quickly. You turn off the water and pull back the curtain, rolling your eyes again. "... maybe..." you hear him mutter again under his breath behind you.'
-							act'Finish showering together':gt'brother_voyeur','brother_shower_end'
+							gs'brother_shower_sex','ending_route_routine'
 						end
 					end
 
@@ -79,7 +88,7 @@ if $ARGS[0] = 'brother_shower_bj':
 							'Your brother stares at you for a moment, giving you a look.'
 							'"Slut." he says.'
 							'"Cum dispenser." you smile back.'
-							act'Finish showering together':gt'brother_voyeur','brother_shower_end'
+							gs'brother_shower_sex','ending_route_routine'
 						end
 					end
 				end
@@ -96,7 +105,7 @@ if $ARGS[0] = 'brother_shower_bj':
 						'"Sorry Kolka, I just couldn''t help myself! Blowing you was too much fun and I didn''t want to stop." You keep licking and sucking on his tip as if to make your point. "I hope you''ll forgive me."'
 						'"You could have at least swallowed if you weren''t going to let me give you a facial," he grumbles as you stand up.'
 						'"Maybe next time," you say with is what is probably a very frustrating wink.'
-						act'Finish showering together':gt'brother_voyeur','brother_shower_end'
+						gs'brother_shower_sex','ending_route_routine'
 					end
 
 					act'But I just washed my face':
@@ -110,7 +119,7 @@ if $ARGS[0] = 'brother_shower_bj':
 							'"Cum is hard to clean off! Even in the shower! It''s all sticky and gets everywhere. Even if you wipe it off your face, it gets on your hands, and then you have to be careful to get it all off before you run it through your hair."'
 							'Kolka opens his mouth but nothing comes out. Guess he thought better of whatever he was about to say.'
 							'"Hrmph! Always asking to cum on a girl''s face, never thinking about what a mess it makes or the trouble it causes for her! Boys!"'
-							act'Finish showering together':gt'brother_voyeur','brother_shower_end'
+							gs'brother_shower_sex','ending_route_routine'
 						end
 
 						act'It''s still dirty':
@@ -120,26 +129,25 @@ if $ARGS[0] = 'brother_shower_bj':
 							'"It''s not dirty! Besides, I hear that cum is good for a girl''s skin. You should be <i>asking</i> me to cum on your face!"'
 							'"Pfft~!" You roll your eyes. "And where did you hear that? From some porno you were watching with your friends?"'
 							'"No!" he says quickly. You turn off the water and pull back the curtain, rolling your eyes again. "... maybe..." you hear him mutter again under his breath.'
-							act'Finish showering together':gt'brother_voyeur','brother_shower_end'
+							gs'brother_shower_sex','ending_route_routine'
 						end
 					end
 				end
 			end
-			act'Let him cum on your face':gt'brother_voyeur_sex','shower_facial'
+			act'Let him cum on your face':gt'brother_shower_sex', 'shower_facial'
 		end
 	end
 
-	act'Let him fuck you':gt'brother_voyeur_sex','brother_shower_fuck'
-	act'Offer him your ass':gt'brother_voyeur_sex','brother_shower_anal'
+	act'Let him fuck you':gt'brother_shower_sex', 'brother_shower_fuck'
 end
 
 
 if $ARGS[0] = 'brother_shower_fuck_first':
 	npc_rel['A34'] += 20
-	gs 'boystat','A34'
+	gs 'boystat', 'A34'
 	cla & *clr
 	if brotherSex < 7:brotherSex = 7
-	'<center><video autoplay loop src="images/shared/home/bathroom/broshower2.mp4"></center>'
+	'<center><video autoplay loop src="images/shared/sex/shower/doggy_enter2.mp4"></center>'
 	'You lean back into your brother, gripping his member and jerking it a few times to make sure he''s still hard enough for what you want to do next. You pull on him, carefully guiding his cock until you can feel the tip pressing against the entrance of pussy.'
 	if brother_knows_not_virgin = 1:
 		brotherfuck += 1
@@ -155,7 +163,7 @@ if $ARGS[0] = 'brother_shower_fuck_first':
 			'"It''s okay Kolka. I''m not mad. Let''s get you into the club. Why don''t I show you the <b>member only</b> entrance?"'
 			'"Don''t you mean member<b>s</b> only entrance sis?" he asks, confused.'
 			'"That''s not what I said," you whisper, pushing your hips back and swallowing him straight to the hilt.'
-			act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_first3'
+			act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_first3'
 		end
 		act'This doesn''t make you''re special':
 			cla
@@ -165,7 +173,7 @@ if $ARGS[0] = 'brother_shower_fuck_first':
 			'"There''s been a lot of members in that club." You position his tip at your entrance, lining him up for what you''re about to do next.'
 			'"A <b>lot.</b> Of <b>members.</b>" On your emphasized words, you thrust your hips backward to take his entire cock inside you in one go, causing your brother to gasp and grab you by the hips to steady himself.'
 			'"Inside. <i>My. <b>''Club.''</i></b>" you whisper into his ear.'
-			act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_first3'
+			act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_first3'
 		end
 	else
 		brotherfuck += 1
@@ -179,7 +187,7 @@ if $ARGS[0] = 'brother_shower_fuck_first':
 				cla
 				'"Yeah. I am." You smile at him. "I''m giving my first time to you little brother."'
 				'Still smiling, you push your ass towards him and impale yourself on his cock.'
-				act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_first2'
+				act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_first2'
 			end
 
 			act'No, I''m not (lie)':
@@ -187,7 +195,7 @@ if $ARGS[0] = 'brother_shower_fuck_first':
 				brothervirginlie = 1
 				'"Nope!" You smile at him. "Sorry to disappoint, but I lost my virginity a while back little brother."'
 				'You''re not really sure why you''re lying to him about this, but there''s no time to think about that as you push your ass towards him and impale yourself on his cock.'
-				act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_first2'
+				act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_first2'
 			end
 
 			act'No, I''m a slut (lie)':
@@ -195,14 +203,14 @@ if $ARGS[0] = 'brother_shower_fuck_first':
 				brothervirginlie = 2
 				'"Nope!" You smile at him. "Sorry to disappoint, but yours is just going to be one more of many different dicks that have been inside my pussy little brother."'
 				'You''re not really sure why you''re lying to him about this, especially with the implication that you''re a huge slut, but there''s no time to think about that as you push your ass towards him and impale yourself on his cock.'
-				act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_first2'
+				act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_first2'
 			end
 		else
 			act'No, I''m not':
 				cla
 				'"Nope!" You smile at him. "Sorry to disappoint, but I lost my virginity a while back little brother."'
 				'With one more quick jerk on his cock for good measure and push your ass towards him, swallowing his length with your pussy.'
-				act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_first2'
+				act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_first2'
 			end
 
 			act'No, I''m a slut':
@@ -210,7 +218,7 @@ if $ARGS[0] = 'brother_shower_fuck_first':
 				brother_knows_not_virgin = 1
 				'"Nope!" You smile at him. "Sorry to disappoint, but yours is just going to be one more of many different dicks that have been inside my pussy little brother."'
 				'You''re not really sure why you''re telling him about this, especially with the implication that you''re a huge slut, but there''s no time to think about that as you thrust your hips backward to take his entire length inside you in one go. Your brother gasps at the rush of having his cock entirely swallowed by your pussy, grabbing you by the hips to steady himself.'
-				act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_first3'
+				act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_first3'
 			end
 
 			act'Yes, you''re my first time (lie)':
@@ -220,7 +228,7 @@ if $ARGS[0] = 'brother_shower_fuck_first':
 				'"Yeah. I am." You smile at him. "You''re my first time little brother."'
 				if guy >= 10:'You feel a little bad for lying to him, but you figure it''ll probably make him feel special if he thinks you''re giving him your virginity, especially considering the numerous quantity of dicks that''ve been inside you. You give his cock one more quick jerk for good measure and start pushing him in.'
 				if guy < 10:'You feel a little bad for lying to him, but you figure it''ll probably make him feel special if he thinks you''re giving him your virginity. You give his cock one more quick jerk for good measure and start pushing him inside you.'
-				act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_first2'
+				act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_first2'
 			end
 		end
 	end
@@ -234,16 +242,16 @@ if $ARGS[0] = 'brother_shower_fuck_first2':
 		'<center><video autoplay loop src="images/shared/home/bathroom/broshowervirgin.mp4"></center>'
 		'Holding your breath, you push back on Kolka, feeling his tip stretch your pussy. He eventually pushes the entire length of his cock inside causing you to gasp in pain as his <<npc_dick[''A34'']>> cm dick tears through your hymen. Despite your pain, neither of you stop moving, continuing to thrust against each other.'
 		!!elseif stat['hidden_vaginal'] > 0:
-		!!	'<center><video autoplay loop src="images/characters/pavlovsk/resident/kolka/event/shower/broshower.mp4"></center>'
+		!!	'<center><video autoplay loop src="images/shared/sex/shower/doggy5.mp4"></center>'
 		!!	'Kolka slides inside you with surprising ease. Though his dick still stretches your pussy, you find it to be pleasant instead of painful. Of course you''ve heard stories that say it doesn''t hurt for some girls, but you always thought it was a myth or at least a rare occurrence. <i>I must be pretty lucky!<</i> you think to yourself.'
 	else
-		'<center><video autoplay loop src="images/characters/pavlovsk/resident/kolka/event/shower/broshower.mp4"></center>'
+		'<center><video autoplay loop src="images/shared/sex/shower/doggy5.mp4"></center>'
 		'Your pussy easily swallows your brother''s <<npc_dick[''A34'']>> cm cock and you immediately start building into a rhythm, pushing back on him in time with his thrusts for maximum depth of penetration.'
 	end
 
 	act'Continue':
 		cla & *clr
-		'<center><video autoplay loop src="images/characters/pavlovsk/resident/kolka/event/shower/broshower.mp4"></center>'
+		'<center><video autoplay loop src="images/shared/sex/shower/doggy5.mp4"></center>'
 		if pcs_vag = 0:
 			'Several minutes pass and your pain is long forgotten. The only thing you can feel now is the ecstasy of Kolka''s cock pumping in and out of your pussy. His hands come up to grope your breasts and you moan in pleasure. Is this what sex is? How did you live your life without it? Why did you wait so long to lose your virginity? Why didn''t you jump on your brother''s cock sooner?!'
 		elseif stat['hidden_vaginal'] > 0 and stat['vaginal'] = 0:
@@ -253,7 +261,8 @@ if $ARGS[0] = 'brother_shower_fuck_first2':
 		end
 		guy += 1
 		gs 'arousal', 'vaginal', 5
-		gs 'arousal','breasts', 1
+		gs 'arousal', 'vaginal', -5
+		gs 'arousal', 'foreplay', -10
 		gs 'stat'
 
 		if pcs_horny >= 90:
@@ -261,7 +270,7 @@ if $ARGS[0] = 'brother_shower_fuck_first2':
 			*nl
 			'Your incestuous shower sex continues and you vaguely think that Kolka trying to tell you something but you''re too drunk on cock to hear what he''s saying. Suddenly, he pulls you tight, pushing himself as far into you as he can. Something spurts inside you, filling you up, sending you over the edge, orgasming hard on your brother''s cock.'
 			'As your orgasm winds down and your legs stop quivering, you lean forward against the shower wall, Kolka''s cock slipping from between your legs. You start to think about how empty you feel without a cock inside you when you realize you feel something dripping out from your pussy.'
-			'"Is... is that cum? Did you cum inside me?!" you pant.'
+			'"Is... is that cum? Did you come insideme?!" you pant.'
 			'"Y-yeah... I was trying to tell you that I was cumming but you didn''t say anything so..."'
 
 			if succubusflag = 0:
@@ -275,22 +284,22 @@ if $ARGS[0] = 'brother_shower_fuck_first2':
 					'<i>Damn...</i> You close your eyes, sighing as you feel another glob of Kolka''s cum drip from your pussy. <i>I should go buy a morning after pill from the pharmacy...</i>'
 				end
 			end
-			act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+			act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 		else
 			'Suddenly, you feel your brother tapping you on the shoulder.'
-			act'Continue':gt'brother_voyeur_sex','brother_fuck_cum'
+			act'Continue':gt'brother_shower_sex', 'brother_fuck_cum'
 		end
 	end
 end
 if $ARGS[0] = 'brother_shower_fuck_first3':
 	guy += 1
 	gs 'arousal', 'vaginal', rand(5,10)
-	gs 'arousal','breasts', 1
+	gs 'arousal', 'foreplay', 1
 	gs 'stat'
 	eff_contra = iif(argc > 1,ARGS[1],sexcontra)
 	tmp = func('pregriskeval',eff_contra)
 	cla & *clr
-	'<center><video autoplay loop src="images/characters/pavlovsk/resident/kolka/event/shower/broshower.mp4"></center>'
+	'<center><video autoplay loop src="images/shared/sex/shower/doggy5.mp4"></center>'
 	'Barely giving him any time at all to recover from your sudden start, you immediately break into a hard rhythm, thrusting your hips back and giving it your all. He''s your little brother after all. You should try to make his first time special. Soon enough, you start giving him tips.'
 	'"Hold my hips so you have more control."'
 	'"Grab my boobs if you like. Boobs are meant to be grabbed during sex.'
@@ -298,17 +307,17 @@ if $ARGS[0] = 'brother_shower_fuck_first3':
 	'Kolka''s really getting into it. He pumps in and out you, member slick with your juices. His hands come up to grab your breasts and you gasp when they''re used as leverage to fuck you harder, his cock reaching even deeper inside you. His cock! Oh god! It''s driving you insane! Even though it''s his first time, he''s actually pretty good! Fuck! You should have jumped on his dick ages ago!'
 	'Several minutes go by with you unable to think about anything except how good fucking your brother feels.'
 	'Suddenly, you feel him urgently tapping you on the shoulder.'
-	act'Continue':gt'brother_voyeur_sex','brother_fuck_cum'
+	act'Continue':gt'brother_shower_sex', 'brother_fuck_cum'
 end
 
 if $ARGS[0] = 'brother_shower_fuck':
 	broshowerfuck = daystart
-	gs 'boystat','A34'
-	if brotherfuck < 1:gt 'brother_voyeur_sex', 'brother_shower_fuck_first'
+	gs 'boystat', 'A34'
+	if brotherfuck < 1:gt'brother_shower_sex', 'brother_shower_fuck_first'
 	brotherfuck += 1
 	if brotherSex < 7:brotherSex = 7
 	npc_rel['A34'] += 5
-	gt 'brother_voyeur_sex','brother_fuck_cum'
+	gt 'brother_shower_sex', 'brother_fuck_cum'
 end
 
 if $ARGS[0] = 'brother_shower_anal':
@@ -316,40 +325,38 @@ if $ARGS[0] = 'brother_shower_anal':
 	gs 'boystat','A34'
 	brotheranal += 1
 	npc_rel['A34'] += 5
-	if stat['think_virgin'] = 1 or brotheranal = 0:
-		if pcs_anus = 0:
-			gt 'brother_voyeur_sex','brother_shower_anal_vagv_analv'
+	if brotheranal = 0:
+		if stat['think_virgin'] = 1:
+			gt 'brother_shower_sex','brother_shower_anal_vagv_analv'
 		else
-			gt 'brother_voyeur_sex','brother_shower_anal_vagnv_analv'
+			gt 'brother_shower_sex','brother_shower_anal_vagnv_analv'
 		end
 	else
-		if pcs_anus = 0:
-			gt 'brother_voyeur_sex','brother_shower_anal_vagv_analnv'
+		if stat['think_virgin'] = 1:
+			gt 'brother_shower_sex','brother_shower_anal_vagv_analnv'
 		else
-			gt 'brother_voyeur_sex','brother_shower_anal_vagnv_analnv'
+			gt 'brother_shower_sex','brother_shower_anal_vagnv_analnv'
 		end
 	end
 end
 
 if $ARGS[0] = 'brother_shower_anal_vagv_analv':
-	*clr
-	cla
+	cla & *clr
 	'<center><img <<$set_imgh>> src="images/shared/home/bathroom/brothershowersex2.jpg"></center>'
 	'Kolka looks at you. You know he wants to go further, and you want to do more than a blowjob too, but you know you can''t.'
+	*nl
 	'"We have to stop. I want to do more, but if we continue... if I lose my virginity, then mother will kill me."' 
 	'Kolka looks confused, and with a hint of pleading in his voice says "But... I don''t get it. How would she know?"'
 	'You are momentarily surprised he doesn''t know before realizing that he has no reason to know. "Why do you think I have to go to the doctors every month? I have to get checked."'
 	'Kolka thinks for a moment before smiling. "Are my grades good enough to become a doctor?"'
 	act 'What a smartass':
-		*clr
-		cla
+		cla & *clr
 		'<center><img <<$set_imgh>> src="images/shared/home/bathroom/brothershowersex1.jpg"></center>'
-		'It irritates you that he jokes about a monthly task that you wish you did not have. "Don''t be a smartass..." A thought then comes through your head, and you nervously continue. "Unless... Would you... Do you want... Want to try anal instead? I know it''s not-"'
+		'"Don''t be a smartass!" It irritates you that he jokes about a monthly task that he doesn''t have to do. A thought then comes through your head, and you gulp nervously. "Unless... Would you... Do you want... Want to try anal instead? I know it''s not-"'
 		'"Yes!" Kolka says, interrupting you mid-sentence with much more enthusiasm than you were expecting.'  
 		'"Okay, but go slow. I''ve never done this before," you tell him.'
 		act 'Prepare yourself':
-			*clr
-			cla
+			cla & *clr
 			'<center><video autoplay loop src="images/shared/home/bathroom/broshower2.mp4"></center>'
 			'Kolka gives you a wide smile. "Okay, I''ll go slow, I promise. You can stop me if you want."' 
 			'You turn your back to him, unsure of what to do, so you decide to use your hands to keep your cheeks parted.  He puts one hand on your hip and slowly pushes the tip of his penis against your anus.'
@@ -359,20 +366,21 @@ if $ARGS[0] = 'brother_shower_anal_vagv_analv':
 			gs 'arousal', 'anal', 2
 			gs 'stat'
 			act 'Try to relax':
-				*clr
-				cla
+				cla & *clr
 				'<center><video autoplay loop src="images/characters/pavlovsk/resident/kolka/event/shower/showeranal3.mp4"></center>'
 				'As Kolka slowly enters you, you feel yourself unintentionally tighten your ass around his penis and your hands move to brace yourself against the wall. As you do this, Kolka briefly pauses before slowly going deeper. It''s an odd feeling; not exactly painful but not pleasurable either.'
+				*nl
 				'Kolka starts moving a little faster, and you realize that having water as lube isn''t that effective. You feel some burning pain as he begins picking up speed, but there is another feeling. You start to feel... pleasant; it''s not that much, but it''s definitely there.'
+				*nl
 				'You move a hand down to your clit, and while it''s not that easy, you manage to give yourself some extra stimulation. You soon realize that you''re beginning to feel good, really good. Your clit stimulation, the taboo act and now Kolka''s thrusting is turning from pleasant to... pleasure. Indeed, the pain is rapidly falling into history as your pleasure ramps up with every thrust.  Now you are finding it hard not moan in pleasure as this new experience is undeniably pushing you towards a powerful orgasm.'
 				gs 'arousal', 'anal', 5
 				gs 'arousal', 'finger_clit', 2
 				gs 'stat'
 				act 'Enjoy':
-					*clr
-					cla
+					cla & *clr
 					'<center><video autoplay loop src="images/characters/pavlovsk/resident/kolka/event/shower/showeranal6.mp4"></center>'
 					'Just as you''re about to cum, you feel Kolka thrust deep and hold it as he cums deep in your bowels, pushing you over the edge. Unable to keep quiet, you moan as your climax tears though you, your body quivering as your knees become weak. You are steadied as Kolka holds you in a firm embrace from behind, squeezing your breasts as he does.'
+					*nl
 					'"That was..." you begin to say before you realize that you''re unsure what to say.'
 					gs 'cum_call', 'anal', 'A34', 1
 					gs 'arousal', 'finger_clit', 2
@@ -383,13 +391,13 @@ if $ARGS[0] = 'brother_shower_anal_vagv_analv':
 					act 'Was it good for you?':
 						gs 'arousal', 'end'
 						gs 'stat'
-						*clr
-						cla
+						cla & *clr
 						'<center><img <<$set_imgh>> src="images/shared/home/bathroom/brotherwash.jpg"></center>'
 						'You both quietly return to washing before Kolka asks "Was I, um... Was it okay? Did you enjoy it?"'
-						'You replay it in your mind as you say "Well it felt uncomfortable at first and even a bit painful, but by the end it was, well let''s just say, yes, I enjoyed it. Just let me know when you''re about to cum next time, okay?"'
+						'"It felt uncomfortable at first and even a bit painful," you say, wincing at the mere memory. "But by the end it was... well let''s just say, yes, I enjoyed it. But let me know when you''re about to cum next time, okay?"'
 						'"Does that mean that there will be a next time?" he asks with a hopeful expression on his face.'
 						'"No promises," you say as you realise that he''s not the only one looking forward to trying it again.'
+						*nl
 						'The sit under the water together for a little while longer before you realize someone might notice that your brother is missing and become suspicious. You quickly shut off the water and dry him off, gathering Kolka''s clothes and shooing him into the hallway.'
 						act'Finish':mirror_steam = hour & gt $loc
 					end
@@ -403,13 +411,18 @@ if $ARGS[0] = 'brother_shower_anal_vagnv_analv':
 	*clr
 	cla
 	'<center><img <<$set_imgh>> src="images/shared/home/bathroom/brothershowersex2.jpg"></center>'
-	'After a short internal debate over whether or not you should do it, you chew your bottom lip. "Kolka, I''m an anal virgin. Would you be willing to change that?" you ask nervously.'  
+	'You chew your lip, debating with yourself internally before just spitting it out.'
+	*nl
+	'"Kolka," you begin nervously. "I''m... I''m an anal virgin. Would you be willing to change that?"'  
+	*nl
 	'He freezes for a second before a broad grin appears on his face. "I''d like that."'
-	'While you''re no virgin, anal sex presents problems that you''ve not had before. Kolka seems to be thinking the same as you and asks "So, how do you want to do this?"'
+	'While you''re no virgin, anal sex presents problems that you''ve not had before. Kolka seems to be thinking the same as you, asking, "So... how do you want to do this?"'
 	'"Go slow, and if I ask you to stop, please stop, okay?" you reply.'  
-	'"Okay, but what about lube? Is the water enough?"'  
+	'"Okay, but what about lube? Is the water enough?"'
+	*nl
 	'This question stops you. Thinking back to porn that you''ve seen, they often just spit, but that doesn''t sound like a good option to you now that you''re about to have something fairly large entering you.'  
-	'Kolka comes up with a suggestion. "I could try to use some of your pussy juice... You know, like one or two thrusts there first, then we try.  What do you think?"'  
+	'Kolka comes up with a suggestion. "I could try to use some of your pussy juice... You know, like one or two thrusts there first, then we try. What do you think?"'  
+	*nl
 	'While you''re not sure if you like the label ''pussy juice'', it''s the only plan you''ve got.'
 	act '"Okay, let''s do that."':
 		*clr
@@ -433,7 +446,6 @@ if $ARGS[0] = 'brother_shower_anal_vagnv_analv':
 			'"Sorry, I''ll try to stop..."' 
 			'"No, it''s not a complaint, it was just unexpected," he replies.'
 			act 'Try to relax':
-				*clr & cla
 				'<center><video autoplay loop src="images/characters/pavlovsk/resident/kolka/event/shower/showeranal6.mp4"></center>'
 				'After another minute, Kolka asks "Can I start to move now?"'  
 				'You take a deep breath. "Yes, but go slow."'  
@@ -542,10 +554,10 @@ if $ARGS[0] = 'brother_shower_anal_vagnv_analnv':
 	end
 end
 
-!! ----------------------------------------------------------- Cum Variants  ---------------------------------------------------------------------
+!! ----------------------------------------------------------- Cum Variants ---------------------------------------------------------------------
 
 if $ARGS[0] = 'brother_fuck_cum':
-	'<center><video autoplay loop src="images/characters/pavlovsk/resident/kolka/event/shower/broshower.mp4"></center>'
+	'<center><video autoplay loop src="images/shared/sex/shower/doggy4.mp4"></center>'
 	if brotherfuck ! 1:brothercumchoice = rand(1,5)
 	if brotherfuck = 1:
 		brothercumchoice = 1
@@ -560,28 +572,28 @@ if $ARGS[0] = 'brother_fuck_cum':
 		'"<<$pcs_nickname>>-! I''m gonna cum! What should I do?"'
 		act'Not inside me!':
 			cla & *clr
-			gs 'arousal','hj', 1
+			gs 'arousal', 'hj', 1
 			gs 'cum_call', 'stomach', 'A34', 1
-			'<center><video autoplay loop src="images/shared/home/bathroom/showercum.mp4"></center>'
+			'<center><video autoplay loop src="images/shared/sex/shower/jerkoff1.mp4"></center>'
 			'"Not inside me!" you cry out. You quickly pull yourself off him and turn around, grabbing his cock with your hand and jerking him furiously until he groans and you feel his hot cum spattering all over your stomach.'
-			act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+			act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 		end
 
-		act'Suck him off':gt'brother_voyeur_sex','shower_swallow'
+		act'Suck him off':gt'brother_shower_sex', 'shower_swallow'
 
-		act'Let him cum on your face':gt'brother_voyeur_sex','shower_facial'
+		act'Let him cum on your face':gt'brother_shower_sex', 'shower_facial'
 		
-		act'Fuck him till he cums':gt'brother_voyeur_sex','shower_creampie'
+		act'Fuck him till he cums':gt'brother_shower_sex', 'shower_creampie'
 
-		act'Fill me up!': gt'brother_voyeur_sex','shower_fill_me_up'
+		act'Fill me up!': gt'brother_shower_sex', 'shower_fill_me_up'
 		
 	elseif brothercumchoice = 2:
-		'"<<$pcs_nickname>>-! I''m almost there! Can I cum inside you today?"'
+		'"<<$pcs_nickname>>-! I''m almost there! Can I come insideyou today?"'
 		if knowpreg = 0 and thinkpreg = 0:
 			act'Push him off (not inside!)':
 				cla & *clr
 				gs 'cum_call', 'stomach', 'A34', 1
-				'<center><video autoplay loop src="images/shared/home/bathroom/showercum.mp4"></center>'
+				'<center><video autoplay loop src="images/shared/sex/shower/jerkoff1.mp4"></center>'
 				'"No! Not inside me!" you cry out. You push him off you and turn around. Grabbing his cock, you jerk him vigorously until he groans, spraying hot cum that spatters all over your stomach.'
 				if birth_control['think_safe'] = 0:
 					'Feeling his spunk on your stomach, you suddenly grow annoyed and wonder why you even finished him off. "What the fuck Kolka?! Are you <i>trying</i> to get me pregnant?"'
@@ -592,7 +604,7 @@ if $ARGS[0] = 'brother_fuck_cum':
 						'"Well how was I supposed to know that?"'
 					end
 				end
-				act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+				act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 			end
 		end
 
@@ -600,7 +612,7 @@ if $ARGS[0] = 'brother_fuck_cum':
 			cla & *clr
 			gs 'cum_call', 'stomach', 'A34', 1
 			gs 'stat'
-			'<center><video autoplay loop src="images/shared/home/bathroom/showercum.mp4"></center>'
+			'<center><video autoplay loop src="images/shared/sex/shower/jerkoff1.mp4"></center>'
 			'"Not today Kolka." You push your brother off of you and turn around. Grabbing his cock, you jerk him vigorously until he groans, spraying hot cum that spatters all over your stomach.'
 			if birth_control['kolka_knows'] = 1:
 				'"Hey what gives?" he complains. "I thought you were on birth control? Why can''t I cum inside?"'
@@ -609,36 +621,36 @@ if $ARGS[0] = 'brother_fuck_cum':
 					'"Sorry, I stopped using it a while ago. If you came inside me, you could have seriously knocked me up."'
 					'Kolka gulps at the realization of what you just said.'
 				else
-					'"I just didn''t want you to cum inside me today," you say irritatedly.'
+					'"I just didn''t want you to come insideme today," you say irritatedly.'
 					'"But why does it matter if you''re on birth control?"'
 					'"Because I said so! It''s my body! I get a say in where you cum on it!"'
 				end
 			end
 			if birth_control['think_safe'] = 0:'"Sorry," you smile apologetically. "I''m not on birth control and I can''t afford to get knocked up. Especially not by my little brother."'
-			act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+			act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 		end
 		
-		act'Fuck him till he cums':gt'brother_voyeur_sex','shower_creampie'
+		act'Fuck him till he cums':gt'brother_shower_sex', 'shower_creampie'
 			
-		act'Fill me up!':gt 'brother_voyeur_sex','shower_fill_me_up'
+		act'Fill me up!':gt 'brother_shower_sex', 'shower_fill_me_up'
 		
 	elseif brothercumchoice = 3:
 		'"<<$pcs_nickname>>-! I''m almost there! Let me cum on your face!"'
-		act'Let him cum on your face':gt'brother_voyeur_sex','shower_facial'
+		act'Let him cum on your face':gt'brother_shower_sex', 'shower_facial'
 
-		act'Ignore him, make him cum inside you':gt'brother_voyeur_sex','shower_forced_creampie'
+		act'Ignore him, make him come insideyou':gt'brother_shower_sex', 'shower_forced_creampie'
 
 	elseif brothercumchoice = 4:
 		'"<<$pcs_nickname>>-! I''m almost there! Can I cum in your mouth?"'
 		brotherbjcomment = 3
-		act'Let him cum in your mouth':gt'brother_voyeur_sex','shower_swallow'
+		act'Let him cum in your mouth':gt'brother_shower_sex', 'shower_swallow'
 
-		act'Ignore him, make him cum inside you':gt'brother_voyeur_sex','shower_forced_creampie'
+		act'Ignore him, make him come inside you':gt'brother_shower_sex', 'shower_forced_creampie'
 			
 	elseif brothercumchoice = 5:
 		act'Continue':
 			cla & *clr
-			'<center><video autoplay loop src="images/characters/pavlovsk/resident/kolka/event/shower/broshower.mp4"></center>'
+			'<center><video autoplay loop src="images/shared/sex/shower/doggy5.mp4"></center>'
 			gs 'cum_call', '', 'A34', 1
 			*nl
 			'Suddenly Kolka grabs you tight, thrusting his cock into you as deep as it can go and you can feel him pulsating inside you.'
@@ -649,7 +661,7 @@ if $ARGS[0] = 'brother_fuck_cum':
 				gs 'arousal', 'vaginal', 1
 			end
 			'A moment later, he pulls out of you and you can feel a thick liquid dripping from your pussy. You frown at that, and turn your head around to face him.'
-			'"What just... wait, is that...? Did you just cum inside me?"'
+			'"What just... wait, is that...? Did you just come insideme?"'
 			if birth_control['kolka_knows'] = 1:
 				'"Well yeah," he says. "You''re on birth control anyways right?"'
 				if birth_control['think_safe'] = 0:
@@ -661,7 +673,7 @@ if $ARGS[0] = 'brother_fuck_cum':
 						'"Well you didn''t tell me about it! How was I supposed to know?!"'
 						'"Fuck!"'
 						'<i>Maybe I can get a morning after pill from the pharmacy,</i> you think to yourself.'
-						act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+						act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 					end
 					
 					act'"I''m not but it''s okay"':
@@ -671,7 +683,7 @@ if $ARGS[0] = 'brother_fuck_cum':
 						'"What?? But you said-!"'
 						'"I know, I know. I''m sorry Kolka, this is my fault, I should have told you. But now you know I guess?" you smile weakly at him.'
 						'<i>Maybe I can get a morning after pill from the pharmacy,</i> you think to yourself.'
-						act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+						act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 					end
 				else
 					act'"Was just asking"':
@@ -682,18 +694,18 @@ if $ARGS[0] = 'brother_fuck_cum':
 							'"Only if I''ve been properly fucked beforehand," you respond wryly.'
 						else
 							'"Yup," you smile. "Was just asking because I wasn''t sure what happened."'
-							'"You didn''t feel me cum inside you?" he asks, raising an eyebrow?"'
+							'"You didn''t feel me come insideyou?" he asks, raising an eyebrow?"'
 							'"I did, I just didn''t understand why you were cumming without making me cum first. I thought you were a better lover than that," you respond wryly.'
 						end
-						act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+						act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 					end
 					
 					act'"You still need to ask" (tease)':
 						cla & *nl
 						'"Well," you chide him, "you still need to ask."'
 						'"How come? It''s not like you''re in any danger are you?"'
-						'"No, but I like telling you to cum inside me," you smirk.'
-						act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+						'"No, but I like telling you to come insideme," you smirk.'
+						act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 					end
 					
 					act'"You still need to ask"':
@@ -702,7 +714,7 @@ if $ARGS[0] = 'brother_fuck_cum':
 						'"How come? It''s not like you''re in any danger are you?"'
 						'"No, but you still need to ask. It''s my pussy and it''s my right to choose whether you''re filling it with cum or not."'
 						'"Tch. Whatever."'
-						act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+						act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 					end
 				end
 			else
@@ -714,15 +726,15 @@ if $ARGS[0] = 'brother_fuck_cum':
 						cla & *nl
 						'"It''s okay Kolka, I''m on birth control," you reassure him. His expression melts with visible relief. "But still, you need to be more careful. If I forget to take my pills or stop for some reason, you cumming inside me like that could be really dangerous. I could really get pregnant."'
 						'He nods back at you in understanding. "I''m sorry," he says again. "I''ll be more careful in the future."'
-						act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+						act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 					end
 					
 					act'"I''m on birth control so you don''t have to worry"':
 						cla & *nl
-						'"It''s okay Kolka, I''m on birth control," you reassure him. His expression melts with visible relief. "So that means you can cum inside me as much as you like and you don''t have to worry."'
+						'"It''s okay Kolka, I''m on birth control," you reassure him. His expression melts with visible relief. "So that means you can come insideme as much as you like and you don''t have to worry."'
 						'You wink at him and his jaw drops open. He looks down at your cum dripping pussy and you can feel a hunger exuding from him.'
 						'<i>Oops. I might have just created a monster,</i> you think to yourself.'
-						act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+						act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 					end
 					act'Play a prank on him':
 						cla & *nl
@@ -739,7 +751,7 @@ if $ARGS[0] = 'brother_fuck_cum':
 							'"What the fuck! Are you fucking kidding me?!"'
 							'"Would you rather I not be?" you giggle, his reactions sending you into another fit. "Would you rather have had your sperm swarming around my unprotected uterus looking for eggs to impregnate?"'
 							'"You know what I mean!" His anger has you cackling further and you have to spray yourself in the face with the shower head just to calm down.'
-							act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+							act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 						end
 					end
 				else
@@ -750,7 +762,7 @@ if $ARGS[0] = 'brother_fuck_cum':
 								'"It''s okay Kolka, I''m on my period right now. I don''t think I can get pregnant on my period."'
 								'His face sighs with visible relief.'
 								'"We got lucky this time. Consider it a freebie," you smile at him.'
-								act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+								act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 							end
 							act'"You need to be more careful!"':
 								cla & *nl
@@ -758,11 +770,11 @@ if $ARGS[0] = 'brother_fuck_cum':
 								'"I know! I know! I''m sorry!"'
 								'You huff out in anger but turn back to face him again anyways.'
 								'"Look, I was on my period this time and I don''t think I can get pregnant on my period. But you should know better! If I wasn''t on my period right now this could have been really bad! So show some self control next time!" He nods fearfully in agreement.'
-								act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+								act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 							end
 						elseif knowpreg = 1:
 							'<i>Well,</i> you think to yourself, <i>I''m already pregnant.</i>'
-							act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+							act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 						else
 							act'"It''s okay, it was an accident"':
 								cla & *nl
@@ -772,7 +784,7 @@ if $ARGS[0] = 'brother_fuck_cum':
 								'"Yeah, I know. I could get pregnant from this. But we''ll just have to hope I don''t. We can''t change it now, we''ll just have to be more careful in the future."'
 								'"The future? You mean..."'
 								'"Yes, I''m still going to keep fucking you Kolka," you smile at him. "Just cause this happened doesn''t mean I''m going to leave you alone. So just learn from the mistake and we''ll move on from it together, okay? Maybe I can buy a morning after pill from the pharmacy later."'
-								act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+								act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 							end
 							act'"You need to be more careful!"':
 								cla & *nl
@@ -784,7 +796,18 @@ if $ARGS[0] = 'brother_fuck_cum':
 								'"Fuck! What the fuck were you thinking?!"'
 								'You continue to swear at your brother for the next minute while he pleads for your forgiveness.'
 								'<i>Maybe I can get a morning after pill from the pharmacy,</i> you think to yourself.'
-								act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+								act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
+							end
+							act'"What the fuck!"':
+								cla & *nl
+								'"What the fuck Kolka!" you hiss. "What if I get pregnant?!"'
+								'"I know! I know! I''m sorry!"'
+								'"You fucking moron! Get the fuck out!" In your rage, you shove him out of the shower and into the hallway, sopping wet before slamming it behind him and closing the latch.'
+								*nl
+								'<i>Fuck! Fuck! Fuck! Fuck, fuck!</i>'
+								*nl
+								'<i>Idiot! ... I wonder if I can get a morning after pill from the pharmacy...</i> you think as you watch the cum spill from your pussy and run down the drain.'
+								act'Continue':mirror_steam = hour & gt $loc
 							end
 						end
 						if brother['cp_accident'] >= 5:
@@ -795,14 +818,14 @@ if $ARGS[0] = 'brother_fuck_cum':
 								'"Well what if you started taking birth control? Then I can cum in you as much any time right?"'
 								'"That''s not the point Kolka. You need to have more self control!"'
 								'<i>Though he is right...</i>'
-								act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+								act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 							end
 						end
 					else
-						'"It''s okay Kolka, I''m on birth control," you lie. His expression melts with visible relief. "So that means you can cum inside me as much as you like and you don''t have to worry."'
+						'"It''s okay Kolka, I''m on birth control," you lie. His expression melts with visible relief. "So that means you can come insideme as much as you like and you don''t have to worry."'
 						'You wink at him and his jaw drops open. He looks down at your cum dripping pussy and you can feel a hunger exuding from him.'
 						'<i>Oops. I might have just created a monster,</i> you think to yourself. <i>Well it''s not like I could have told him the truth that I''m a magical sex demon now could I?</i>'
-						act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+						act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
 					end
 				end
 			end
@@ -813,8 +836,8 @@ end
 if $ARGS[0] = 'shower_swallow':
 	cla & *clr
 	brotherbjcomment = rand(1,2)
-	gs 'boystat','A34'
-	gs 'arousal','bj', 1
+	gs 'boystat', 'A34'
+	gs 'arousal', 'bj', 1
 	gs 'cum_call', 'mouth_swallow', 'A34', 1
 	gs 'stat'
 	'<center><video autoplay loop src="images/shared/home/bathroom/showerbj.mp4"></center>'
@@ -830,28 +853,27 @@ if $ARGS[0] = 'shower_swallow':
 	act'Swallow':
 		cla & *clr
 		'<center><video autoplay loop src="images/shared/home/bathroom/showerbj.mp4"></center>'
-		'You suck a little more, making sure you''ve drained him to the last drop and then withdraw your mouth with carefully closed lips. You look up at him, meeting his eyes through the falling water drops, and swallow his sperm in one gulp.'
+		'You suck a little more, making sure you''ve drained him to the last drop and then withdraw your mouth with carefully closed lips before swallowing it all in a single gulp.'
 		act'"Let''s finish up"':
 			cla & *clr
 			'<center><img <<$set_imgh>> src="images/shared/home/bathroom/brothershower.jpg"></center>'
-			'You stand up without further comment, letting the water run over your body a little more and making sure your hair is thoroughly rinsed.'
 			'"Come on Kolka, let''s finish up quickly before someone starts wondering where we are."'
-			if broshowerfuck = daystart:
-				act'Finish showering together':gt'brother_voyeur_sex','brother_shower_fuck_end'
-			else
-				act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-			end
+			'You stand up without further comment, letting the water run over your body a little more and making sure your hair is thoroughly rinsed.'
+			gs'brother_shower_sex','ending_route_routine'
 		end
 
 		act'Stare intimately':
-			cla
-			*nl
-			'Still looking into his eyes, you stare at him and lean forward to give him a very long and intimate kiss on the tip of his cock before standing up. The two of you hold each other in continued silence, spending a few more minutes under the water and basking in the afterglow together.'
-			if broshowerfuck = daystart:
-				act'Finish showering together':gt'brother_voyeur_sex','brother_shower_fuck_end'
-			else
-				act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-			end
+			cla & *nl
+			'Looking into his eyes, you stare at him and lean forward to give him a very long and intimate kiss on the tip of his cock before standing up. The two of you hold each other in continued silence, spending a few more minutes under the water and basking in the afterglow together.'
+			gs'brother_shower_sex','ending_route_routine'
+		end
+		
+		act'Yuck':
+			cla & *nl
+			'"Yeech," you wince, sticking out your tongue. "That''s gross."'
+			'"But you swallowed it anyways?" Kolka asks, confused.'
+			'"Spitting is quitting," you smirk.'
+			gs'brother_shower_sex','ending_route_routine'
 		end
 
 		if pcs_traits['cumeater'] = 1:
@@ -862,62 +884,51 @@ if $ARGS[0] = 'shower_swallow':
 				if brotherbjcomment = 1:
 					'"That really tastes good to you?"'
 					'"Mhm," you nod, letting the water run through your hair a little more. "Didn''t used to at first. But maybe it''s just an acquired taste. Or maybe little brothers are just the best vintage of cum!" You grin and wiggle your eyebrows at him.'
-					act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
+					gs'brother_shower_sex','ending_route_routine'
 				elseif brotherbjcomment = 2:
 					'Kolka regards you with a bit of a look as you stand back up.'
 					'"What?" you ask at him.'
 					'"You''re kind of a slut, aren''t you <<$pcs_nickname>>?"'
 					act'Feign insult':
-						cla
-						*nl
+						cla & *nl
 						'You gasp in mock indignation. "Kolka! How dare you! I have never been anything other than ladylike! How could you call your beloved sister a slut?"'
 						'"Probably because she loves the taste of cum," he snickers at you while you rinse your hair one last time.'
 						'"Have you considered maybe it''s just yours?" you ask, looking over your shoulder.'
 						'"A cumslut is still a cumslut, even if it''s only for one kind."'
 						'You roll your eyes. He''s being a punk but you can''t find the anger to be annoyed with him. He does have a bit of a point after all.'
-						act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
+						gs'brother_shower_sex','ending_route_routine'
 					end
 
 					act'Careful what you say':
-						cla
-						*nl
+						cla & *nl
 						'"Hey! Careful what you say little brother," you say admonishingly. "Your big sister might stop doing you ''favors'' if you act too much like a brat."'
 						'"Hey, I can''t help it if my big sister is a slut!" he grins. "I just call it like I see it, and girls who swallows are usually sluts. Besides, I don''t think I have to worry too much. If you stopped blowing me, where else would you get your favorite drink?"'
 						if broshowerfuck = daystart:
 							'You roll your eyes. "I''m a slut remember? Maybe I''ll just go around the corner and blow someone else!" you growl at him. Tearing back the curtain, you step out of the tub somewhat annoyed with Kolka. Partially because he''s being a punk, but also partially because he''s actually kind of right. Fucking your brother in the shower and swallowing his cum <i>is</i> pretty slutty...'
-							act'Finish showering together':gt'brother_voyeur_sex','brother_shower_fuck_end'
+							gs'brother_shower_sex','ending_route_routine'
 						else
 							'You roll your eyes. "I''m a slut remember? Maybe I''ll just go around the corner and blow someone else!" You growl at him and shut off the water. Tearing back the curtain, you step out of the tub somewhat annoyed with Kolka. Partially because he''s being a punk, but also partially because he''s actually kind of right. Swallowing your brother''s cum <i>is</i> pretty slutty...'
-							act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
+							gs'brother_shower_sex','ending_route_routine'
 						end
 					end
 
 					act'Yeah, I am':
-						cla
-						*nl
+						cla & *nl
 						'"Uhmm... yeah? What tipped you off? Was it the part where I gave you shower head?"'
 						'"No, it was the part where you swallowed my cum like a shot of vodka. Only sluts swallow like that," he says, grinning.'
 						'You punch him in the arm playfully but you aren''t really mad. He does have a point after all.'
-						if broshowerfuck = daystart:
-							act'Finish showering together':gt'brother_voyeur_sex','brother_shower_fuck_end'
-						else
-							act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-						end
+						gs'brother_shower_sex','ending_route_routine'
 					end
 
 					act'Kiss him to gross him out':
 						cla
 						*nl
-						'You frown at him and without warning fling your arms around his neck to kiss him with as much tongue as you can. He sputters and reels backward, pushing you away.'
+						'You frown at him and fling your arms around his neck without warning. You press your lips against his and force your tongue into his mouth as far as it can go. He sputters, flailing backward and pushing you away.'
 						'"Ugh! Ew! Gross! What the hell <<$pcs_nickname>>?! I just came in your mouth! I don''t want to taste that!"'
 						'He rips open the shower curtain and you grin back in satisfaction as he stumbles out to escape.'
 						'"Well maybe you shouldn''t be calling girls sluts just because they''re nice enough to swallow your cum!"'
 						'<i>Well,</i> you think to yourself. <i>I didn''t <b>just</b> swallow. I did also say I thought it was tasty. I suppose that is a bit slutty isn''t it?</i>'
-						if broshowerfuck = daystart:
-							act'Finish showering together':gt'brother_voyeur_sex','brother_shower_fuck_end'
-						else
-							act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-						end
+						gs'brother_shower_sex','ending_route_routine'
 					end
 
 					act'Only for you(sisterly)':
@@ -928,11 +939,11 @@ if $ARGS[0] = 'shower_swallow':
 						if broshowerfuck = daystart:
 							'"Hey! What''s wrong with that?" you grin at him. "I''d say it''s pretty weird to for your sister to let you fuck her in the shower. I thought you liked that! Don''t you want me to be a slutty weirdo then?"'
 							'"Bah!" he says, clambering out of the shower to escape you, grumbling as he does so. "More slut and less weirdo!"'
-							act'Finish showering together':gt'brother_voyeur_sex','brother_shower_fuck_end'
+							gs'brother_shower_sex','ending_route_routine'
 						else
 							'"Hey! What''s wrong with that?" you grin at him. "I''d say it''s pretty weird to get slutty blowjobs from your sister in the shower. I thought you liked that! Don''t you want me to be a slutty weirdo then?"'
 							'"Bah!" he says, clambering out of the shower to escape you, grumbling as he does so. "More slut and less weirdo!"'
-							act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
+							gs'brother_shower_sex','ending_route_routine'
 						end
 					end
 
@@ -946,11 +957,7 @@ if $ARGS[0] = 'shower_swallow':
 						'"Yes, I''m a slut," you murmur into his ear. "I would never be a slut for anyone else Kolka," taking his hand. "But I''ll happily be a slut for you."'
 						'With your final words you press his hand against your pussy and the heat between your legs.'
 						'Neither of you say anything for a few minutes, standing still with your breasts still pressed against him and his fingers gently working themselves in and out of your pussy. You realize you can''t stay in there together too long, lest someone become suspicious and you wistfully pull away, Kolka''s fingers slipping from your pussy as you do.'
-						if broshowerfuck = daystart:
-							act'Finish showering together':gt'brother_voyeur_sex','brother_shower_fuck_end'
-						else
-							act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-						end
+						gs'brother_shower_sex','ending_route_routine'
 					end
 				end
 			end
@@ -968,21 +975,13 @@ if $ARGS[0] = 'shower_swallow':
 			'"It''s okay Kolka," you smile up at him. "It happens sometimes. Just try to warn me a little sooner next time, okay?" He nods promisingly.'
 			if brotherbj > 5:'You suppress a grin when he promises to do better in the future. You''ve given him enough blowjobs to suspect that he doesn''t give any warning because he wants to cum in your mouth. He never seems to have this problem when he asks to give you a facial. <i>Oh well,</i> you mentally shrug to yourself. <i>What''s a girl to do?</i>'
 			'"Now come on, let''s finish up before someone wonders where we are."'
-			if broshowerfuck = daystart:
-				act'Finish showering together':gt'brother_voyeur_sex','brother_shower_fuck_end'
-			else
-				act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-			end
+			gs'brother_shower_sex','ending_route_routine'
 		elseif brotherbjcomment = 2:
 			'"A little warning next time maybe?"'
 			'"Sorry sis. Your mouth just felt so good and your blowjobs are so great and... Sorry... I just couldn''t hold it."'
 			'"It''s okay Kolka," you smile up at him. "It''s not like I can be mad at you for saying I''m good at giving head." You give him a quick kiss on the tip of his cock before standing up.'
 			'"Now come on, let''s finish up before someone wonders where we are."'
-			if broshowerfuck = daystart:
-				act'Finish showering together':gt'brother_voyeur_sex','brother_shower_fuck_end'
-			else
-				act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-			end
+			gs'brother_shower_sex','ending_route_routine'
 		end
 	end
 end
@@ -990,7 +989,7 @@ end
 if $ARGS[0] = 'shower_facial':
 	cla & *clr
 	brotherbjcomment = rand(1,2)
-	gs 'boystat','A34'
+	gs 'boystat', 'A34'
 	gs 'cum_call', 'face', 'A34', 1
 	gs 'stat'
 	'<center><img <<$set_imgh>> src="images/shared/home/bathroom/facial1.jpg"></center>'
@@ -1007,11 +1006,7 @@ if $ARGS[0] = 'shower_facial':
 			'"Hardy, har, har." Even with your eyes closed, you can feel his self satisfied grin radiating towards you. You squeeze your eyelids tighter, feeling blindly for the water stream to rinse Kolka''s cum off, pushing him out of the way when you realize he''s blocking it. "You ever consider going out with my foot up your ass?"'
 			'"Hey, I''m only asking! You never know, you might start a new trend!" You finish wiping the last of his cum off your face, grimacing when you see that it''s now stuck to your hands instead. You turn, wiping it on your brother''s arm. "Hey!"'
 			'"Maybe you should try wearing it yourself," you retort sarcastically, ignoring his complaint. "''You never know, you might start a new trend!''"'
-			if broshowerfuck = daystart:
-				act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
-			else
-				act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-			end
+			gs'brother_shower_sex','ending_route_routine'
 		end
 
 		act'Only on Sundays':
@@ -1021,11 +1016,7 @@ if $ARGS[0] = 'shower_facial':
 			'You hear him snicker and grin at him with closed eyes, flicking your tongue out to have a taste of the spunk slowly dripping down your face. You motion for Kolka to move aside and let you rinse your face off.'
 			'"Good for spreading a reputation as a town slut too," he adds.'
 			'Finishing rinsing off your face you reply, "Well it''s not like they can complain about wearing my best makeup to church," causing you both to muffle laughter.'
-			if broshowerfuck = daystart:
-				act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
-			else
-				act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-			end
+			gs'brother_shower_sex','ending_route_routine'
 		end
 
 		act'Why? Are you willing to help?':
@@ -1035,11 +1026,7 @@ if $ARGS[0] = 'shower_facial':
 			'You wipe the spunk out of your eyes to can see Kolka grinning at you. "Well of course I would! What kind of brother would I be if I wasn''t willing to help my sister put on her best makeup?"'
 			'"Mhm," you hum, sucking the tart semen off your fingers. "And you would be doing this for completely selfless reasons with no ulterior motive I''m sure, especially not to get a free blowjob in the morning."'
 			'You rinse the rest of the cum off your face as Kolka continues, "Of course I wouldn''t be doing this <i>just</i> for blowjobs. I''d hope to get a few morning fucks in too!" You smack his arm, rolling your eyes but smiling anyways.'
-			if broshowerfuck = daystart:
-				act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
-			else
-				act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-			end
+			gs'brother_shower_sex','ending_route_routine'
 		end
 
 		act'I only did this because I owed you one':
@@ -1055,33 +1042,21 @@ if $ARGS[0] = 'shower_facial':
 				cla
 				*nl
 				'"It''s not all that bad I guess," you say. "It''s just not something I want <i>every</i> time, you know?"'
-				if broshowerfuck = daystart:
-					act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
-				else
-					act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-				end
+				gs'brother_shower_sex','ending_route_routine'
 			end
 			act'I prefer to swallow':
 				cla
 				*nl
 				'"Nah," you say. "I prefer to swallow."'
 				'You grin lewdly at him and you can practically feel him drooling.'
-				if broshowerfuck = daystart:
-					act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
-				else
-					act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-				end
+				gs'brother_shower_sex','ending_route_routine'
 			end
 			act'I prefer creampies':
 				cla
 				*nl
-				'"Nah," you say. "I prefer it when people cum inside me."'
+				'"Nah," you say. "I prefer it when people come insideme."'
 				'You grin lewdly at him and you can practically feel him drooling.'
-				if broshowerfuck = daystart:
-					act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
-				else
-					act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-				end
+				gs'brother_shower_sex','ending_route_routine'
 			end
 				
 		end
@@ -1094,11 +1069,7 @@ if $ARGS[0] = 'shower_facial':
 			'"Really?" Kolka helps you find the showerhead and you start scrubbing your face, annoyed at how it ends up sticking to your hands instead of just sliding down the drain. "If it''s so annoying, why do girls you let people give them facials?"'
 			'Your eyes finally clear of the viscous liquid, you look pointedly at Kolka. "Why do boys always want to cum on girls faces?" you ask, raising an eyebrow and before realizing there''s still a wad of spunk still stuck in it.'
 			'Kolka''s lips twist as he sees your point. "Well... We don''t <i>always</i> want to cum on your faces... Sometimes we want you to swallow instead." Your face finally clean, you shut off the water, rolling your eyes at your brother''s justification.'
-			if broshowerfuck = daystart:
-				act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
-			else
-				act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-			end
+			gs'brother_shower_sex','ending_route_routine'
 		end
 
 		act'Why don''t you find out?':
@@ -1108,11 +1079,7 @@ if $ARGS[0] = 'shower_facial':
 			'"Yeesh, I was just asking," Kolka complains.'
 			'"Yeah, well I''m just telling," you respond, grimacing as you wipe the sticky liquid from your eyes so you can find the showerhead.'
 			'<i>Ugh. Maybe I should have just swallowed,</i> you think to yourself. <i>At least I wouldn''t have to deal with this mess if I had.</i>'
-			if broshowerfuck = daystart:
-				act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
-			else
-				act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-			end
+			gs'brother_shower_sex','ending_route_routine'
 		end
 
 		act'Feels pretty good':
@@ -1129,11 +1096,7 @@ if $ARGS[0] = 'shower_facial':
 				'Finding the showerhead at last, you start to rinse off your face, responding, "Yeah, well, anyone who says they like to swallow is either a liar or a slut." Your face washed clean, you blink a couple times to see Kolka grinning at you.'
 				'"And what does that make you? A girl who lets her little brother cum on her face?"'
 				'You pause and smile back at him before answering. "A good sister."'
-				if broshowerfuck = daystart:
-					act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
-				else
-					act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-				end
+				gs'brother_shower_sex','ending_route_routine'
 			end
 
 			act'Tastes good too':
@@ -1143,11 +1106,7 @@ if $ARGS[0] = 'shower_facial':
 				'"Oh! So girls really do like to eat cum! I always wondered if that was just something they did in pornos."'
 				'You wipe your eyes so you can look at him and suck the spunk off your fingers.'
 				'"Oh yeah. I wish all face masks were as edible as a facial. Though they could probably never be this satisfying."'
-				if broshowerfuck = daystart:
-					act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
-				else
-					act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-				end
+				gs'brother_shower_sex','ending_route_routine'
 			end
 		end
 
@@ -1162,11 +1121,7 @@ if $ARGS[0] = 'shower_facial':
 				'"But if you like eating cum so much, why did you let me cum on your face?"'
 				'You give your hand another lick, sucking on the tips of your fingers where you scrapped the cum out of your eyebrow.'
 				'"''Cause I''m a good sister," you smile at him.'
-				if broshowerfuck = daystart:
-					act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
-				else
-					act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-				end
+				gs'brother_shower_sex','ending_route_routine'
 			end
 		end
 
@@ -1182,11 +1137,7 @@ if $ARGS[0] = 'shower_facial':
 				'"So... Why do you let me do it? Just because you promised?"'
 				'Finally rinsing your face clean, you turn to face him, meeting his eye.'
 				'"''Cause I''m a good sister."'
-				if broshowerfuck = daystart:
-					act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
-				else
-					act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-				end
+				gs'brother_shower_sex','ending_route_routine'
 			end
 
 			act'It''s just messy':
@@ -1195,12 +1146,8 @@ if $ARGS[0] = 'shower_facial':
 				'"It''s not like it actually feels that bad," you say, blinking to keep it out of your eyes and reaching for the showerhead. "It''s just really messy. Can be hard to clean out of your hair sometimes."'
 				'"Ahh. I see. So... Why did you let me do it today? Just because you promised? Cause we''re in the shower and it''s easier to clean?"'
 				'You turn towards him, meeting his eye, his cum still coating your face.'
-				'"''Cause I''m a good sister."'
-				if broshowerfuck = daystart:
-					act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
-				else
-					act'Finish showering together': gs 'arousal', 'end' & gt 'brother_voyeur', 'brother_shower_end'
-				end
+				'"Cause I''m a good sister."'
+				gs'brother_shower_sex','ending_route_routine'
 			end
 		end
 	end
@@ -1208,7 +1155,7 @@ end
 
 if $ARGS[0] = 'shower_creampie':
 	cla & *clr
-	'<center><video autoplay loop src="images/characters/pavlovsk/resident/kolka/event/shower/broshower.mp4"></center>'
+	'<center><video autoplay loop src="images/shared/sex/shower/doggy5.mp4"></center>'
 	'You don''t respond verbally but pick up the pace, slapping your ass back against Kolka''s cock until he grabs you tight and you can feel his cock pulsating, spurts of cum pouring out inside you.'
 	$orgasm_txt = 'The sensation sends you over the edge and you orgasm as well, your pussy gripping him and squeezing every last drop of cum from his cock.'
 	gs 'arousal', 'vaginal', 1
@@ -1216,7 +1163,7 @@ if $ARGS[0] = 'shower_creampie':
 	gs 'stat'
 	'Looking back at Kolka with a self satisfied smirk, you slip off his cock, feeling cum gush from your pussy and spatter on the bath tub floor.'
 	*nl
-	act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+	gs'brother_shower_sex','ending_route_routine'
 	if succubusflag = 0:
 		if knowpreg = 1 or thinkpreg = 1:
 			'You chuckle to yourself, "Well, at least I can''t get any more pregnant than I already am!"'
@@ -1245,13 +1192,11 @@ if $ARGS[0] = 'shower_creampie':
 			'You watch as another glob of cum dribbles from your pussy, plopping onto the tub floor. <i>I need to buy a morning after pill from the pharmacy. What if I get pregnant?</i>'
 		end
 	end
-	
-
 end
 
 if $ARGS[0] = 'shower_forced_creampie':
 	cla & *clr
-	'<center><video autoplay loop src="images/characters/pavlovsk/resident/kolka/event/shower/broshower.mp4"></center>'
+	'<center><video autoplay loop src="images/shared/sex/shower/doggy5.mp4"></center>'
 	gs 'cum_call', '', 'A34', 1
 	gs 'stat'
 	if pcs_horny >= 90:
@@ -1279,7 +1224,7 @@ if $ARGS[0] = 'shower_forced_creampie':
 		'With Kolka''s hands balled into fists at his side and your hands on your hips, the two of you glare at each other, scowling. This turned into a much bigger argument than you meant it to.'
 		if succubusflag = 0:
 			if knowpreg = 1 or thinkpreg = 1:
-				'You chuckle to yourself: "Well, at least I can''t get any more pregnant than I already am!"'
+				'You chuckle to yourself. "Well, at least I can''t get any more pregnant than I already am!"'
 			elseif birth_control['think_safe'] = 1 or tabletkishot >= 1:
 				'<i>Goddamn it,</i> you think, looking down to watch another glob of cum drips from your snatch. <i>Only my idiot brother could ruin a perfectly good creampie like this.</i>'
 				'<i>At least '+iif(birth_control['implant_status'] > 1, 'I have a birth control implant', 'I''m on birth control')+'...</i>'
@@ -1290,7 +1235,7 @@ if $ARGS[0] = 'shower_forced_creampie':
 				'<i>Goddamn it,</i> you think, looking down to watch another glob of cum drips from your snatch. <i>Fuck. I shouldn''t have done this anyways. This gets me pregnant?</i>'
 			end
 		end
-		act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+		gs'brother_shower_sex','ending_route_routine'
 	end
 
 	act'It felt too good':
@@ -1311,7 +1256,7 @@ if $ARGS[0] = 'shower_forced_creampie':
 		else
 			'<i>Shit... I probably should have had more self control...</i> you think to yourself, watching another glob of cum dribble from your pussy. <i>What if this gets me pregnant?</i>'
 		end
-		act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+		gs'brother_shower_sex','ending_route_routine'
 	end
 
 	act'Too much mess':
@@ -1320,7 +1265,7 @@ if $ARGS[0] = 'shower_forced_creampie':
 		'"Yeah I guess..."'
 		if succubusflag = 0:
 			if knowpreg = 1 or thinkpreg = 1:
-				'You chuckle to yourself: "Well, at least I can''t get any more pregnant than I already am!"'
+				'You chuckle to yourself. "Well, at least I can''t get any more pregnant than I already am!"'
 			elseif birth_control['think_safe'] = 1 or tabletkishot >= 1:
 				'<i>Fuck, that feels good...</i> you think to yourself, looking down to watch another glob dribbles out of you with satisfaction.'
 				'<i>It''s a good thing '+iif(birth_control['implant_status'] > 1, 'I have a birth control implant', 'I''m on birth control')+'...</i>'
@@ -1331,13 +1276,13 @@ if $ARGS[0] = 'shower_forced_creampie':
 				'<i>Shit...</i> Another glob of cum dribbles from your pussy, plopping onto the tub floor. <i>Maybe I should have let him cum on my face after all... What if I get pregnant?</i>'
 			end
 		end
-		act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+		gs'brother_shower_sex','ending_route_routine'
 	end
 end
 
 if $ARGS[0] = 'shower_fill_me_up':
 	cla & *clr
-	'<center><video autoplay loop src="images/characters/pavlovsk/resident/kolka/event/shower/broshower.mp4"></center>'
+	'<center><video autoplay loop src="images/shared/sex/shower/doggy5.mp4"></center>'
 	gs 'cum_call', '', 'A34', 1
 	gs 'stat'
 	'"Yes! Yes!" you cry out. "Fill me up!"'
@@ -1370,10 +1315,19 @@ if $ARGS[0] = 'shower_fill_me_up':
 			'<i>Huh...</i> you think, basking in the afterglow. <i>I''ll have to buy a morning after pill from the pharmacy...</i>'
 		end
 	end
-	act'Continue':gt'brother_voyeur_sex','brother_shower_fuck_end'
+	gs'brother_shower_sex','ending_route_routine'
 end
 
 !! ----------------------------------------------------------- Ending ---------------------------------------------------------------------
+
+if $ARGS[0] = 'ending_route_routine':
+	gs 'arousal', 'end'
+	if broshowerfuck = daystart:
+		act'Continue':gt'brother_shower_sex', 'brother_shower_fuck_end'
+	else
+		act'Finish showering together':gt'brother_voyeur', 'brother_shower_end'
+	end
+end
 
 if $ARGS[0] = 'brother_shower_fuck_end':
 	cla & *clr
@@ -1381,7 +1335,6 @@ if $ARGS[0] = 'brother_shower_fuck_end':
 	dynamic $showerdin
 	brother_shower_times += 1
 	minut += 2
-	gs 'arousal','end'
 	if brotherfuck = 1 and brother_knows_not_virgin >= 1:
 		gs'stat'
 		'<center><img <<$set_imgh>> src="images/shared/home/bathroom/brothershowersex2.jpg"></center>'
@@ -1482,8 +1435,18 @@ if $ARGS[0] = 'brother_shower_fuck_end':
 						brothervirginlie = 0
 						act'Finish drying off':mirror_steam = hour & gt $loc
 					end
+					
+					act'Kiss him goodbye (just a peck)':
+						cla
+						'You lean in and peck Kolka on the lips with a quick kiss.'
+						'"See you next time," you smile.'
+						'He smiles back at you and picks up his clothes before peeking into the hallway to make sure no one is there and slipping out the door.'
+						brother_knows_not_virgin = 1
+						brothervirginlie = 0
+						act'Finish drying off':mirror_steam = hour & gt $loc
+					end
 
-					act'Kiss him goodbye':
+					act'Kiss him goodbye (intimate)':
 						cla
 						'You lean in to give your brother an intimate kiss, then stepping back to meet his eyes.'
 						'"See you later," you whisper.'
@@ -1620,6 +1583,4 @@ if $ARGS[0] = 'brother_shower_fuck_end':
 	end
 end
 
-
---- brother_voyeur_sex ---------------------------------
-
+--- brother_shower_sex ---------------------------------
