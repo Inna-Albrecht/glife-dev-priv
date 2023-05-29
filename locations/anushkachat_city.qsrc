@@ -1,4 +1,23 @@
-# anushkachat
+# anushkachat_city
+!2023/05/08
+
+!AnushkaLocCity tells us where Anushka is located
+!----------------------------------------------
+!locat['A144'] = 0 (Anushka not home Fri and Sat 20:00 for rest of night)
+!locat['A144'] = 1 (Anushka in the hallway)
+!locat['A144'] = 2 (Anushka in her room)
+!locat['A144'] = 3 (Anushka in Radomir''s room)
+!locat['A144'] = 4 (Anushka in the kitchen)
+!locat['A144'] = 5 (Anushka in the livingroom)
+!locat['A144'] = 6 (Anushka in Valentin and Arkadi''s room)
+!locat['A144'] = 7 (Anushka in the bathroom)
+!locat['A144'] = 8 (Anushka is in the garage with the band Wed 18-23)
+!locat['A144'] = 9 (Anushka is at the coffee hole working (week = 2 or week = 4 or week = 7) and hour >= 18) or (week = 5 and hour >= 10 and hour < 16))
+!locat['A144'] = 10 (Anushka is at the University classes 09:00 to 15:00)
+!locat['A144'] = 11 (Anushka is at the modeling studio First Sat of each month 8 to 16:00)
+!locat['A144'] = 12 (Anushka is at the University Library Mon and Wed from 15:00 till 18:00)
+!---------------------------------------------
+
 !!2021/03/26
 if $ARGS[0] = 'chat':
 	menu_off = 1
@@ -7,17 +26,16 @@ if $ARGS[0] = 'chat':
 	'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
 	'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
 	'The two of you sit on her bed and talk about a variety of topics.'
-	act 'Stop talking': gt 'anush_bedroom','anushroom'
+	act 'Stop talking': gt 'anush_bedroom_city','anushroom'
 	act 'Make small talk':
 		*clr & cla
 		minut += 5
 		gs 'npc_relationship', 'modify', 'A144', 'like'
 		'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
 		'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
-		'The two of you chat about a variety of things, mostly school, music, clothes and what has been going on in Pavlovsk lately.'
-
-		act 'Keep talking': gt 'anushkachat', 'chat'
-		act 'Stop talking': gt 'anush_bedroom','anushroom'
+		'The two of you chat about a variety of things, the University, music, clothes, about any of the kids from Pavlovsk you have seen, and what has been going on lately.'
+		act 'Keep talking': gt 'anushkachat_city', 'chat'
+		act 'Stop talking': gt 'anush_bedroom_city','anushroom'
 	end
 	if anushkaQW['raddate'] = 1:
 		act 'Ask about her dating Radomir':
@@ -28,9 +46,9 @@ if $ARGS[0] = 'chat':
 			'"You and Rad use to date, huh?" you ask her.'
 			'She sighs and looks at you for a moment, so you can tell this isn''t something she is too keen on talking about. "Yeah, when I was young and dumb. I started hanging out with them right after they started their band. Val told me him and Rad starting a band and he invited me to come and listen to them."'
 			'You just nod as she continues. "Anyway, they were kind of crap honestly, since they could barely play while the lyrics were awful. They mostly just did covers to practice with back then." She pauses for a moment, as if remembering what it was like. "Even back then, Rad was a decent singer, a bit on the raw, but you could hear the natural talent. He used to look at me with that look. It was the one that boys would give you when they really want you. Back then it felt amazing to be looked at that way, but now I know what that look really means..." she finishes with a frown.'
+			*nl
 			'You prod her a little. "What happened next?"'
 			'"Well he was already a bit of a bad boy even then, plus he was the lead singer of a band, which was hot. He paid attention to me in the way young girls want guys to pay attention to them," she says with a laugh and shakes her head. "God, I was so stupid back then. When he asked me out, I agreed and we started dating. I ended up becoming their number one fan."'
-
 			act 'Continue':
 				*clr & cla
 				minut += 5
@@ -38,6 +56,7 @@ if $ARGS[0] = 'chat':
 				'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
 				'She sighs. "At first, everything was great, because I already knew how to play guitar myself. We talked about that and I helped by teaching him what I knew from my dad. He taught me what he knew and we both got better. I also helped him write original songs for the band. In time, I asked him if I could join, so he let me try out. Rad and Val agreed. Shithead didn''t." She notices the look on your face and adds "He was the band''s previous drummer. He was a real asshole."'
 				'You get curious. "How was he an asshole? I mean other than not wanting you in the band?" you ask.'
+				*nl
 				'"It''s hard to explain, but he was always harping about me being in the band and that Rad spent too much time with me. It was like he was against us from the start, but him trying to split us up it only made our relationship grow stronger," she replies, but seems a bit unsure of how to express herself.'
 				'You nod. "Okay, so being in the band caused you guys to break up?"'
 				'She gives you a confused stare. "What? No! At first, things were better than ever between Rad and me."'
@@ -49,8 +68,9 @@ if $ARGS[0] = 'chat':
 					minut += 5
 					'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
 					'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
-					'She frowns at you as you prod her even more. "That''s when it started. Suddenly, I had guys hitting on me all the time, even guys several years older than me. They had never paid me any attention before. The girls were doing the same with the boys, but I didn''t care. Rad and I were together."'
+					'She frowns at you as you prod her even more. "That''s when it started. Suddenly, I had guys hitting on me all the time, even guys many years older than me. They had never paid me any attention before. The girls were doing the same with the boys, but I didn''t care. Rad and I were together."'
 					'You can tell she''s starting to get visibly upset, but not angry. It''s like she might actually be on the verge of crying. She takes a deep, calming breath to get herself back under control and her vulnerable moment passes. "It happened after one of the underground parties we played at. After we were done, we joined in with the dancing and partying. I noticed Rad wasn''t anywhere to be seen, so I went to look for him... Yeah, I found him fucking some other chick." Now she seems to be angry. "We fought, and he said he was sorry and wouldn''t do it anymore, so I forgave him. God, I was so fucking stupid!" she says harshly.'
+					*nl
 					'"However, he didn''t stop. I caught him several more times with different sluts, but I always kept forgiving him and taking him back. Then the fucking asshole had the nerve to fucking dump <i>me</i>, saying it was ''best for the band''," She goes quiet while looking sad.'
 					'"In the end, he was right. We never should have dated and should have broken up sooner. It was a good PR move for the band if we were both single, to create the fantasy of our fans having a chance with us. It took me a while to come to that realization," she says while shaking her head.'
 
@@ -63,8 +83,8 @@ if $ARGS[0] = 'chat':
 						'You''re a little confused. "Why are you still hooking up if you guys broke up?"'
 						'She shrugs. "I got over it. I forgave him, but we were both young and stupid. Now we''re just friends and he''s still a good fuck, so why not?" she says with a smile, but you''re unconvinced. She changes the subject to a song she recently heard, obviously not wanting to talk about it any further.'
 
-						act 'Keep talking': gt 'anushkachat', 'chat'
-						act 'Stop talking': gt 'anush_bedroom','anushroom'
+						act 'Keep talking': gt 'anushkachat_city', 'chat'
+						act 'Stop talking': gt 'anush_bedroom_city','anushroom'
 					end
 				end
 			end
@@ -87,11 +107,11 @@ if $ARGS[0] = 'chat':
 			if anushkaQW['radspy'] = 1 and anushkaQW['valspy'] = 1:
 				'You also wonder if the reason she doesn''t want to talk about it is because she''s sleeping with both Radomir and Valentin. Does that cause problems with the band?'
 
-				act 'Problems in the band': gt 'anushkachat', 'radval'
+				act 'Problems in the band': gt 'anushkachat_city', 'radval'
 			end
 
-			act 'Keep talking': gt 'anushkachat', 'chat'
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
 		end
 	end
 	if anushkaQW['valspy'] = 1:
@@ -109,11 +129,11 @@ if $ARGS[0] = 'chat':
 			if anushkaQW['radspy'] = 1 and anushkaQW['valspy'] =1:
 				'After that, you can''t help but wonder if her sleeping with both Radomir and Valentin causes problems with the band.'
 
-				act 'Problems in the band': gt 'anushkachat', 'radval'
+				act 'Problems in the band': gt 'anushkachat_city', 'radval'
 			end
 
-			act 'Keep talking': gt 'anushkachat', 'chat'
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
 		end
 	end
 	if anushkaQW['marspy'] = 1:
@@ -137,34 +157,31 @@ if $ARGS[0] = 'chat':
 			'She shakes her head slightly. "It''s not just that, or I should say only that. It''s also about everyone saying it''s wrong. It''s the same reason that I like fucking other chicks or getting naked. Breaking the rules and rubbing it in their narrow minded faces is a huge turn on. I mean fuck what society thinks or wants us to think or how to act. The more people tell me good girls shouldn''t do this or that, the more I want to fucking do it. I say break all the fucking rules and live free."'
 			'You only nod at that. You know Anushka is a bit of an anarchist at heart, so it''s not a surprise breaking social norms turns her on.'
 
-			act 'Keep talking': gt 'anushkachat', 'chat'
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
 			if OluQW['sex'] = 1 and OluQW['nush_inv'] = 0:
-				act 'Tell her about Olu': gt 'anushkachat', 'tell_about_olu'
+				act 'Tell her about Olu': gt 'anushkachat_city', 'tell_about_olu'
 			end
 		end
 	end
 	if OluQW['sex'] = 1 and OluQW['tell'] = 0:
-		act 'Tell her about Olu': gt 'anushkachat', 'tell_about_olu'
-	end
-	if OluQW['tell'] = 1 and OluQW['nush_inv'] = 0:
-		act 'Invite to see Olu': gt 'anushkachat', 'invite_olu'
+		act 'Tell her about Olu': gt 'anushkachat_city', 'tell_about_olu'
 	end
 	if npc_sex['A82'] > 0 and DjibrilQW['invite'] = 0 and DjibrilQW['tell'] = 0:
 		if OluQW['tell'] = 1:
-			act 'Tell her about Djibril': gt 'anushkachat', 'tell_about_djibril'
+			act 'Tell her about Djibril': gt 'anushkachat_city', 'tell_about_djibril'
 		else
-			act 'Tell her about Djibril': gt 'anushkachat', 'tell_about_djibril1'
+			act 'Tell her about Djibril': gt 'anushkachat_city', 'tell_about_djibril1'
 		end
 	end
 	if DjibrilQW['tell'] = 1 and DjibrilQW['nush_inv'] = 0:
-		act 'Invite to see Djibril': gt 'anushkachat', 'invite_djibril'
+		act 'Invite to see Djibril': gt 'anushkachat_city', 'invite_djibril'
 	end
 	if DjibrilQW['nush_inv'] = 1 and DjibrilQW['tell'] = 1 and DjibrilQW['african_gangbang'] = 1:
-		act 'Tell her about Djibril gangbang': gt 'anushkachat', 'tell_about_djibril_gangbang'
+		act 'Tell her about Djibril gangbang': gt 'anushkachat_city', 'tell_about_djibril_gangbang'
 	end
 	if DjibrilQW['tell'] = 2 and DjibrilQW['nush_inv'] < 2:
-		act 'Invite to Djibril gangbang': gt 'anushkachat', 'invite_djibril_gangbang'
+		act 'Invite to Djibril gangbang': gt 'anushkachat_city', 'invite_djibril_gangbang'
 	end
 	if anushkaQW['dolls'] < 2:
 		act 'Ask where she buys her clothes':
@@ -172,8 +189,8 @@ if $ARGS[0] = 'chat':
 			minut += 5
 			'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
 			'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
-			'You notice the clothes scattered around her room. Some are hanging up, others are draped over chairs while a few are lying on the floor. They''re all of a similar style and you''re curious where she gets them. None of the local stores carry clothes like the ones she wears, and you rarely even see them much in the city.  "Hey Nush, where do you buy your clothes? Online?"'
-			'"Dolls, well Patchwork Dolls to be exact. It''s near the university in the city." She proceeds to tell you how to find the place.'
+			'You notice the clothes scattered around her room. Some are hanging up, others are draped over chairs while a few are lying on the floor. They''re all of a similar style and you''re curious where she gets them. "Hey Nush, where do you buy your clothes? Online?"'
+			'"Dolls, well Patchwork Dolls to be exact. It''s not that far from here, nor from the University campus." She proceeds to tell you how to find the place.'
 			if anushkaQW['dolls'] = 0:
 				anushkaQW['dolls'] = 2
 				'"If you stop by, tell Savva or Viola that I said they still owe me a round from the last time."'
@@ -182,17 +199,17 @@ if $ARGS[0] = 'chat':
 				'You tell her you''ve been there before and she smiles. "Next time you''re there, tell them that they still owe me a round."'
 			end
 
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
-			act 'Keep talking': gt 'anushkachat', 'chat'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
 		end
 	end
 	if anushkaQW['guitarplay'] >= 1:
-		act 'Would you play something again?': gt 'anush_bedroom', 'nush_guitar'
+		act 'Would you play something again?': gt 'anush_bedroom_city', 'nush_guitar'
 	end
 	act 'Ask about the band':
 		*clr & cla
 		minut += 5
-		gopnikbandQW['practice_invite'] = 1
+		gopnikbandQW['practice_invite_city'] = 1
 		'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
 		'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
 		'The two of you sit close to each other. "I''ve heard a lot about your band. Most people tell me that you''re really good."'
@@ -201,10 +218,10 @@ if $ARGS[0] = 'chat':
 		*nl
 		'"That would be great because we usually have lots of fun at the gigs. They''re so energetic, especially when the crowd gets going. The after parties are also a lot of fun too, especially if you like to party. Yeah, you should definitely come by. I''m sure you wouldn''t regret it. You could also come to one of our practice sessions if you just want to hear us play and hang out."'
 		'You nod. "Where do you practice?"'
-		'She laughs. "Rad somehow managed to get a hold of one of those old garages at the end of the courtyard and we converted it into a studio of sorts." She explains roughly where it is and you find that it isn''t too far from your stepfather''s garage.'
+		'She laughs. "When we got this apartment, we made sure there was a open garage spot as well. We set up in there sortly like we did back in Pav, in fact we moved all the stuff from there here, so it really looks almost exactly the same." She explains roughly where it is and you find it.'
 
-		act 'Stop talking': gt 'anush_bedroom','anushroom'
-		act 'Keep talking': gt 'anushkachat', 'chat'
+		act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+		act 'Keep talking': gt 'anushkachat_city', 'chat'
 	end
 
 	act 'Ask about the boys in the band':
@@ -219,8 +236,8 @@ if $ARGS[0] = 'chat':
 		*nl
 		'"Finally, there''s Valentin. He plays a mean bass and has been with the band from the start. He''s pretty laid back and a lot of fun to hang out with, but takes the business side of things seriously. When we do gigs, Rad schmoozes the client, then Val steps in to handle the details to work out a good deal for us. On the plus side, he''s got a really big dick," she says with a laugh.'
 
-		act 'Stop talking': gt 'anush_bedroom','anushroom'
-		act 'Keep talking': gt 'anushkachat', 'chat'
+		act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+		act 'Keep talking': gt 'anushkachat_city', 'chat'
 	end
 
 	act 'Ask about her being a free-spirit':
@@ -237,8 +254,8 @@ if $ARGS[0] = 'chat':
 		'She shrugs. "Honestly, I don''t really care. If I like someone and I find them attractive, then I want to fuck them. I mean sex is great; it feels amazing, and it''s something you can share with other people, so why not have sex with anyone you like and find attractive?"'
 		'You open your mouth to respond when you realize that she makes a valid point.'
 
-		act 'Stop talking': gt 'anush_bedroom','anushroom'
-		act 'Keep talking': gt 'anushkachat', 'chat'
+		act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+		act 'Keep talking': gt 'anushkachat_city', 'chat'
 	end
 	if anushkaQW['about_alyona'] = 0:
 		act 'Ask about Alyona':
@@ -250,104 +267,76 @@ if $ARGS[0] = 'chat':
 			'"I often see you hanging out with Alyona. Aren''t you scared of her?" you ask curiously.'
 			'"Yeah, she''s my partner in crime and confidant. We hang out a lot and I really enjoy her company. She''s also our band''s number one fan. Most people are afraid of her, but she doesn''t really give a fuck, which is what I really like about her."'
 
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
-			act 'Keep talking': gt 'anushkachat', 'chat'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
 		end
 	end
-	if npc_rel['A144'] >= 60 and NikoPayback = 2 and anushkaQW['vs_niko'] = 0:
-		act 'Ask for help with Niko':
-			*clr & cla
-			anushkaQW['vs_niko'] = 1
-			minut += 30
-			'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
-			'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
-			'You look away from her and downcast your eyes before speaking. "Nush, I need your help... I..."'
-			'You feel her wrap an arm around you. "What''s wrong <<$pcs_nickname>>? You can tell me."'
-			'You collect your thoughts before continuing. "Ever since I broke up with Niko, he has been raping me at lunchtime and I..."'
-			'She jerks back in surprise. "He WHAT?!" She hugs you tight. "That motherfucker! Don''t worry, he won''t be doing it anymore. When does this happen?" You explain how he comes to you at lunch and demands things from you and she nods. "Meet him at lunch like normal and we''ll put an end to this."'
-			*nl
-			'You wrap your arms around Anushka. "Thank you so much! I didn''t know what to do."'
-			'She smiles. "Don''t worry, it won''t happen again." You sit in her embrace, feeling warm and safe for the first time in a long time. You''re not sure how much time passes, but you eventually feel the need to be alone.'
-			'You gently pull away from her and she lets go. "Thanks. I needed that, but I should get going..."'
-			*nl
-			'"You don''t have to go. You''re welcome to stay," she says softly.'
-			'You nod at her. "Thanks, but I just need to be alone for a while." You climb off the bed and head for the door. "Thanks again. I''ll talk to you later."'
-			'"Okay, see you later. If you need anything, just call." She doesn''t get off the bed and you silently leave the apartment.'
-			act 'Leave': gt 'pav_complex','start'
-		end
-	end
-	act 'Ask about her brothers':
+	act 'Ask about her family':
 		*clr & cla
 		minut += 5
 		'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
 		'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
-		'"I don''t mean to pry, but you and your brothers seem to have a rocky relationship."'
-		'"I know, we have a bit of a love/hate relationship. They can be such little assholes, but at the same time they have their moments when they''re an absolute blast to be around. If only Maksim could just stop creeping around and perving on all my female friends. I blame my mother for that; she''s poisoning them against me, and girls in general, and is turning them into sexist assholes."'
+		'"I don''t mean to pry, but you didn''t seem to have the best relationship with your family, but do you ever go see them?"'
+		'"I try and call once a week sometimes I do. I typically stop by once a month or two to see them. I am actually getting along better with my brothers now that I moved out. Maksim moved into my old room and they both seem happier and think I am cooler for living in the big city." She says with a laugh. "My dad worries even more, he stops by at least once a month to check up on us." She shrugs a bit, but notice she doesn''t mention her mom at all.'
 
-		act 'Stop talking': gt 'anush_bedroom','anushroom'
-		act 'Keep talking': gt 'anushkachat', 'chat'
+		act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+		act 'Keep talking': gt 'anushkachat_city', 'chat'
 	end
 	act 'Ask about the future':
 		*clr & cla
 		minut += 5
 		'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
 		'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
-		'"What will you do if the music path doesn''t work out? Don''t get me wrong, you''re talented and all, but you might never catch your big break," you say with a slight hesitation.'
-		'She looks at you with a smile. "I''m not too worried about that since I''m certain we''ll make it. Either way it might not seem like it, but I''ll let you in on a little secret. Even though you might not see me at school all the time or see me fucking off in class, I''ve got pretty good grades that are good enough to get into the university in Saint Petersburg. I''m planning to attend the university after school, regardless of how the band goes. I know my father wants me to study more and focus on being a good girl, but if he would just cut me some fucking slack I might surprise him."'
+		'"Now that you are here in the city and out of school, what''s the plan?" you ask.'
+		'She looks at you with a smile. "Get my degree at the University, work at the Coffee Hole, and practice with the band, do more gigs. Then party when I manage to have the time, that is about it."'
 		'Before you can say something she asks you "What about you? What are your plans for the future?"'
 		act 'I don''t know':
 			*clr & cla
 			minut += 5
 			'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
 			'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
-			'"I''m not sure, but I guess I have a few options," you tell her.'
-			'She nods. "Well, you should decide before you get stuck in this crappy little town married to some asshole whose kids you''re popping out every few years. Not judging you, unless that''s what you want. I''m just saying..."'
-			'You''re not sure what more to say about it, so you decide to change the subject.'
-
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
-			act 'Keep talking': gt 'anushkachat', 'chat'
+!!need code that checks if Sveta is at the Uni, living in the city or still living in pav.
+			if !!at uni dorm
+				'"I''m not sure, but I guess I have a few options," you tell her.'
+				'She nods. "Well, you should decide before you get stuck in this crappy little town married to some asshole whose kids you''re popping out every few years. Not judging you, unless that''s what you want. I''m just saying..."'
+				'You''re not sure what more to say about it, so you decide to change the subject.'
+			elseif !!living in city apartment
+				'"I''m not sure, but I guess I have a few options, for right now. Work and make ends meet." you tell her.'
+				'She nods. "Well, you should see about doing something more, going to the University or getting some form of certification or something or you might end up married to some asshole whose kids you''re popping out every few years. Not judging you, unless that''s what you want. I''m just saying..."'
+				'You''re not sure what more to say about it, so you decide to change the subject.'
+			else
+				'"I''m not sure, but I guess I have a few options," you tell her.'
+				'She nods. "Well, you should decide before you get stuck in this crappy little town married to some asshole whose kids you''re popping out every few years. Not judging you, unless that''s what you want. I''m just saying..."'
+				'You''re not sure what more to say about it, so you decide to change the subject.'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
 		end
 
-		act 'Go to the university':
+		act 'Studying at the university':
 			*clr & cla
 			minut += 5
 			'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
 			'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
-			'You get a bit excited. "I''m planning to attend the university as well. I''m glad I''ll know someone there now at least."'
-			'She becomes thoughtful for a second. "Maybe we should think about being roommates when we go? As you said, then we know each other and already get along. Let''s talk about it more when the time comes, yeah?"'
+			'You get a bit excited. "I''m studying at the University."'
+			'The two of you talk about the classes you are both taking, it seems she is getting a business degree of all things, while minoring in Music and taking a lot of electives.'
 
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
-			act 'Keep talking': gt 'anushkachat', 'chat'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
 		end
-
-		if Rex_Love = 1 or artemQW['bf'] = 1 or kotovLoveQW = 1 or fedorKozlovQW or NikoVolkovQW >= 5 or (pcs_lover - pcs_girlfriends) > 0:
-			if Rex_Love = 1:	act 'Get married to Rex': gt 'anushkachat', 'telling_marrige_dreams', 'Rex'
-			if artemQW['bf'] = 1: act 'Get married to Artem': gt 'anushkachat', 'telling_marrige_dreams', 'Artem'
-			if kotovLoveQW = 1: act 'Get married to Vitek': gt 'anushkachat', 'telling_marrige_dreams', 'Vitek'
-			if fedorKozlovQW >= 5: act 'Get married to Fedor': gt 'anushkachat', 'telling_marrige_dreams', 'Fedor'
-			if NikoVolkovQW >= 5:	act 'Get married to Niko': gt 'anushkachat', 'telling_marrige_dreams', 'Niko'
-			i = 0
-			:marrid_looop
-			if loverGender[i] ! 1: dynamic '	act ''Get married to <<$npc_usedname["<<$lover[i]>>"]>>'': gt ''anushkachat'', ''telling_marrige_dreams'', $npc_usedname["<<$lover[i]>>"]'
-			i +=1
-			if i < ARRSIZE('lover'): jump 'marrid_looop'
-			killvar 'i'			
-		else
-			act 'Get married':
-				*clr & cla
-				minut += 5
-				gs 'stat'
-				'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
-				'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
-				'You sigh in a way only hopeless romantics do. "Hopefully I can find that special someone and get married soon."'
-				'She gives you a somewhat skeptical look before shrugging. "Well, best of luck with that."'
-				'You''re not sure what more to say on the topic.'
-				act 'Stop talking': gt 'anush_bedroom','anushroom'
-				act 'Keep talking': gt 'anushkachat', 'chat'
-			end
+		act 'Get married':
+			*clr & cla
+			minut += 5
+			gs 'stat'
+			'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
+			'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
+			'You sigh in a way only hopeless romantics do. "Hopefully I can find that special someone and get married soon."'
+			'She gives you a somewhat skeptical look before shrugging. "Well, best of luck with that."'
+			'You''re not sure what more to say on the topic.'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
 		end
 	end
-	act 'Ask if she has a boy/girlfriend':
+	act 'Ask if she has someone special yet':
 		*clr & cla
 		minut += 5
 		'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
@@ -363,10 +352,10 @@ if $ARGS[0] = 'chat':
 			'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/brtkiss.jpg"></center>'
 			'You feel put on the spot since that''s not what you meant. Or maybe subconsciously you do mean it, which is why you asked. Either way, a part of you would really like to be Anushka''s girlfriend. "I guess... maybe. I have been thinking about it a little..."'
 			'With your eyes downcast, you don''t see her reaction and you''re not sure you want to know it. However, you feel her place a finger under your chin so you''re looking at her. Her face is mere inches from yours and you can feel her breath on your face. You''re looking into her eyes when the two of you suddenly start kissing. A long, deep passionate kiss with just a hint of lust to it. You don''t know if you kissed her or she kissed you, but it sure is amazing.'
-			'Finally, the kiss ends and she leans back and sucks on her lower lip while looking at you before she gives you a smirking smile. "Like I said, I''m not looking, but I''m not against it. Let''s just see where the ride takes us." Before things can go further, she asks about the homework from one of your classes, so you get it. She doesn''t want to rush things, but she isn''t saying no either.'
+			'Finally, the kiss ends and she leans back and sucks on her lower lip while looking at you before she gives you a smirking smile. "Like I said, I''m not looking, but I''m not against it. Let''s just see where the ride takes us." Before things can go further, she just changes the subject to a movie she apparently watched recently.'
 
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
-			act 'Keep talking': gt 'anushkachat', 'chat'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
 		end
 
 		act 'No':
@@ -377,12 +366,12 @@ if $ARGS[0] = 'chat':
 			'You shake your head because this conversation really went off the rails and is not at all what you meant. "No, I mean I like you, but not like that. Not that..." She reaches up and places a finger over your lips to stop you from going on. She seems amused by your response.'
 			'"It''s fine. I''m just yanking your chain. I like things just as how they are too."'
 
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
-			act 'Keep talking': gt 'anushkachat', 'chat'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
 		end
 
 		if Rex_Love = 1 or artemQW['bf'] = 1 or kotovLoveQW = 1 or fedorKozlovQW or NikoVolkovQW >= 5 or (pcs_lover - pcs_girlfriends) > 0:
-			act 'I have a boyfriend': gt 'anushkachat', 'boyfriend_chat'
+			act 'I have a boyfriend': gt 'anushkachat_city', 'boyfriend_chat'
 		end
 	end
 	if anushkaQW['valeria_introduced'] = 1:
@@ -391,12 +380,9 @@ if $ARGS[0] = 'chat':
 			minut += 5
 			'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
 			'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
-			'You''re not sure how you should ask this, but you''re curious about her mother. "I don''t mean to pry, but what''s up with your mother?"'
-			'Anushka glances at you. "You mean to ask ''Why is my mother a complete fucking cunt?''" When she sees the look on your face, she waves her hand dismissively. "Don''t worry, everyone but her knows it. Honestly, I don''t really know because she wasn''t always like this. When I was really young, she was pretty fun then she just... changed." She sighs and looks a little sad.'
-			'"The best I can tell is my mother was a party girl looking for a guy she could latch onto and who would give her a party life forever. My dad was the biggest, baddest motherfucker around back then and perfect for my mother. Sometime after I was born, he settled down and I think it just hit her. This was her life now, that of a housewife and a mother. She resents him, my brothers and me for it. She blames us for every bad thing that has happened in her life."'
-			'Her tone turns a bit harsh. "Like my dad says ''She''s just a loser bitch that wanted to live off of a man and didn''t get her way.'' She''s just a waste of fucking space." She looks away for a second before continuing. "I don''t really want to talk about this."'
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
-			act 'Keep talking': gt 'anushkachat', 'chat'
+			'You''re not sure how you should ask this, but you''re curious about her mother. "No!" She sighs,shakes her head and looks a little sad. "It is just best if I avoid her, otherwise we fight non-stop. Anyways I don''t really want to talk about her."'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Change the subject': gt 'anushkachat_city', 'chat'
 		end
 	end
 	if anushkaQW['model'] >= 1:
@@ -411,20 +397,8 @@ if $ARGS[0] = 'chat':
 			'She nods. "Sort of... I mean, if you''re willing to do nude modeling, you can make a lot of money in a short amount of time. Are you interested?" she asks while arching a shapely eyebrow.'
 			'"Nude?" you silently ask yourself. Still, if it pays that much then it might be worth considering. "I don''t know... Maybe... How would I get started? Do I just walk in and tell them I want to be a model or something?"'
 			'She grins at you. "Yeah, pretty much. It helps if you have a portfolio already, but just tell them I sent you. Oh, and make sure you have ID showing you''re old enough."'
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
-			act 'Keep talking': gt 'anushkachat', 'chat'
-			if fakepassport ! 1:
-				act 'Underaged?':
-					*clr & cla
-					fakepassport = 2
-					'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
-					'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
-					'A thought then occurs to you. You''re underaged, and so is Anushka. It''s not legal to model in the nude when you''re under 18. "Wait a second, how did you get past the age check?"'
-					'She laughs. "Sometimes I forget that not everyone has a fake passport. It''s pretty easy to pick one up though." She tells you about a printing shop in the Red Light District that sells fake passports. "Once you have one, you won''t have any problems signing up as a model."'
-					act 'Stop talking': gt 'anush_bedroom','anushroom'
-					act 'Keep talking': gt 'anushkachat', 'chat'
-				end
-			end
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
 		end
 	end
 	gs 'willpower', 'misc', 'self', 'easy'
@@ -445,7 +419,7 @@ if $ARGS[0] = 'chat':
 				'You look at her as you sit side by side. Maybe for too long, or maybe she just senses it, since she turns her head to look at you. Her face is not that far from yours and you can''t help it; she''s so damn pretty! You lean over to give her a kiss, a kiss she fully returns.'
 				gs 'arousal', 'foreplay', 1, 'lesbian'
 				gs 'stat'
-				act 'Stop kissing and talk more': gt 'anushkachat', 'chat'
+				act 'Stop kissing and talk more': gt 'anushkachat_city', 'chat'
 				! We can only go further when kissing occured > 5 times
 				if anushkaQW['kiss'] > 5:
 					act 'Make out':
@@ -462,7 +436,7 @@ if $ARGS[0] = 'chat':
 							'She frowns. "Yeah, whatever." You don''t blame her for her reaction since you did just give her the girl equivalent of blue balls.'
 							gs 'arousal', 'end'
 							gs 'stat'
-							act 'Talk about something else': gt 'anushkachat', 'chat'
+							act 'Talk about something else': gt 'anushkachat_city', 'chat'
 						end
 						act 'Peeking':
 							*clr & cla
@@ -479,7 +453,9 @@ if $ARGS[0] = 'chat':
 								'You don''t waste any time and start pulling her clothes off as she returns the favor and starts removing your clothes as well. It would go a lot faster if the two of you weren''t also passionately kissing and caressing each others'' bodies. Regardless, you''re soon both naked.'
 								gs 'arousal', 'foreplay', 3, 'lesbian'
 								gs 'stat'
-								act 'Get pleasured': gt 'anushkaev1', 'getpleasured'
+								act 'Get pleasured': gt 'anushkaev1', 'getpleasured', 'city'
+	!!this goes to anushkaev1 can you do what ever code is needed so both here and her pav apartment lead to it and then they go back to the correct location afterwards? That will save us from making a new sex folder with just a lot of repeat of the same content.
+	!! HM: Done
 							end
 						end
 					end
@@ -489,14 +465,14 @@ if $ARGS[0] = 'chat':
 				gs 'arousal', 'foreplay', 3, 'lesbian'
 				gs 'arousal', 'end'
 				gs 'stat'
-				act 'Stop kissing and talk more': gt 'anushkachat', 'chat'
+				act 'Stop kissing and talk more': gt 'anushkachat_city', 'chat'
 			end
 		end
 	else
 		act 'Kiss her (<font color="red"><<will_cost>> Willpower</font>)': '<br><font color="red">You don''t have enough willpower to use this action.</font>'
 	end
 	if photographyEv = 2 and portfolio_people[5] = 0:
-		act 'Ask to take a photo': gt 'anushkachat', 'photo_chat'
+		act 'Ask to take a photo': gt 'anushkachat_city', 'photo_chat'
 	end
 	if anushkaQW['photoshoot'] >= 1 and sunweather = 1:
 		act 'Ask to do a photoshoot':
@@ -506,7 +482,7 @@ if $ARGS[0] = 'chat':
 			'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
 			'You pull out your camera. "So how about we go do that photoshoot now?"'
 			'She giggles. "Alright, let''s do this." You get up and follow her as she leads you out of her room, and out of her apartment.'
-			act 'Go do photoshoot': gt 'anushkachat', 'photoshoot'
+			act 'Go do photoshoot': gt 'anushkachat_city', 'photoshoot'
 		end
 	end
 	act 'Snacks':
@@ -517,18 +493,8 @@ if $ARGS[0] = 'chat':
 		'She looks a little surprised, as well as a bit abashed, which is a new look on her. "Yeah sorry, I didn''t think about it. Feel free to just grab something if you want in the future, but come on."'
 		act 'Follow her':gt 'anushapt','snack'
 	end
-	if maksimQW['QWstage'] >= 3:
-		act 'Rematch with your brothers':
-			*clr & cla
-			minut += 1
-			'<center><h4><font color="maroon">Anushka''s Room</font></h4></center>'
-			'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/bedroom/bedroomtalk.jpg"></center>'
-			'You glance over at Anushka. "Hey, I actually had fun playing with your brothers last time. Do you think they would be up for a rematch?"'
-			'She grins at you and gets up, heading for the door already. "Let''s go find out."'
-			act 'Follow': gt 'anushaptbr', 'rematch'
-		end
-	end
-	if artemQW['nush3some_ask'] = 2:
+!!Artem is commented out until Artem is introduce at the Uni and I do his room and start his story arc there.
+	!!if artemQW['nush3some_ask'] = 2:
 		act 'Talk about Artem threesome':
 			*clr & cla
 			minut += 5
@@ -544,8 +510,8 @@ if $ARGS[0] = 'chat':
 				'You shake your head. "No, just making sure you haven''t is all."'
 				'She gives you a strange look and shakes her head slightly. "Whatever. Just call me when you guys want to do it and I''ll swing by if I''m not busy." You briefly consider telling her how the conversation really went, but decide against it. She might tease Artem about it and you would like your boyfriend and friend get along, so you just agree with her and the two of you start talking about possible days and times.'
 			end
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
-			act 'Keep talking': gt 'anushkachat', 'chat'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
 		end
 	end
 end
@@ -559,12 +525,12 @@ if $ARGS[0] = 'photo_chat':
 	'You climb off the bed and grab your camera from your purse. "Hey, do you mind if I take your photo for my portfolio?" you ask.'
 	'She grins and lies back, stretching in a suggestive way. "You want me to model for you?"'
 	'You can''t help but grin at her antics. "Yes. I need the practice and I think you would make a great model."'
-	'She giggles. "Sure, but only if you send me copies for my modelling portfolio."'
+	'She giggles. "Sure, but only if you send me copies for my modeling portfolio."'
 	if anushkaQW['model'] >= 1:
 		'You nod. "Deal."'
 	else
 		anushkaQW['model'] = 1
-		'You do a bit of a double take. "Wait, what? Your modelling portfolio?"'
+		'You do a bit of a double take. "Wait, what? Your modeling portfolio?"'
 		'She giggles at your reaction. "Yeah, I model at a place called Aphrodite in the city."'
 		'You''re a little surprised that you hadn''t heard about this until now. "Oh. Uh yeah, sure I can do that."'
 	end
@@ -580,7 +546,7 @@ if $ARGS[0] = 'photo_chat':
 			'She shakes her head. "This really isn''t the best place. Outside with natural light would be better, since we don''t have any studio lighting."'
 			'You pause. She has a point and does model, so she would know a thing or two about it. "Oh... Yeah okay, that makes sense." You glance at the time and notice it''s still light outside. "Well let''s go while we still have light."'
 			'She giggles. "Alright, let''s do this." You get up and follow her as she leads you out of her room and out of the apartment.'
-			act 'Do photoshoot': gt 'anushkachat', 'photoshoot'
+			act 'Do photoshoot': gt 'anushkachat_city', 'photoshoot'
 		else
 			'You pull out your camera, but before you can take her picture, she interrupts you. "You mean <i>now</i>?"'
 			'You look up at her, confused. "Uh yeah, why?"'
@@ -588,8 +554,8 @@ if $ARGS[0] = 'photo_chat':
 			'You pause. She has a point and does model, so she would know a thing or two about it. "Oh... Yeah okay, that makes sense." You glance at the time and notice that it''s too late.'
 			'She smiles at you. "Don''t worry. Just come over one day when it''s still light outside and we can do it then."'
 			'You nod and put your camera away. "Okay, sounds good."'
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
-			act 'Keep talking': gt 'anushkachat', 'chat'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
 		end
 	end
 end
@@ -605,8 +571,8 @@ if $ARGS[0] = 'boyfriend_chat':
 			'"Niko," you tell her.'
 			'She looks at you, concerned. "<<$pcs_nickname>>, he''s bad news and I don''t mean in the ''fun bad boy'' sort of way. I mean he isn''t what he seems." Noticing your facial expression from bad mouthing your boyfriend, she holds up her hand. "Hey, it''s your life so do what you want. Just... just be careful with him.'
 
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
-			act 'Keep talking': gt 'anushkachat', 'chat'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
 		end
 	end
 	if fedorKozlovQW >= 5:
@@ -619,8 +585,8 @@ if $ARGS[0] = 'boyfriend_chat':
 				'She holds up her hands. "I didn''t say he was gay. I don''t care if he''s gay or bisexual or whatever. I was... Never mind, just forget it. If he makes you happy, then I''m happy for you."'
 				'You nod, accepting her apology of sorts and you both let the topic drop.'
 
-				act 'Stop talking': gt 'anush_bedroom','anushroom'
-				act 'Keep talking': gt 'anushkachat', 'chat'
+				act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+				act 'Keep talking': gt 'anushkachat_city', 'chat'
 			else
 				if hotcat >= 6:
 					'"Fedor," you tell her.'
@@ -639,8 +605,8 @@ if $ARGS[0] = 'boyfriend_chat':
 						'You blush slightly. "Let me think about it, then I''ll talk to him. I''ll let you know."'
 						'She laughs at that. "He''s a guy. They all want to fuck two girls at once, but sure, let me know." You roll your eyes at her comment, even if it was true and decide to change the subject.'
 
-						act 'Stop talking': gt 'anush_bedroom','anushroom'
-						act 'Keep talking': gt 'anushkachat', 'chat'
+						act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+						act 'Keep talking': gt 'anushkachat_city', 'chat'
 					end
 
 					act 'I''ll ask him':
@@ -654,8 +620,8 @@ if $ARGS[0] = 'boyfriend_chat':
 						'She giggles. "Sex is always fun, unless you''re doing it wrong. Anyway, I''m sure if you ask nicely he will agree. He is a guy after all."'
 						'You shake your head. "Yeah, most likely. I''ll let you know what he says."'
 
-						act 'Stop talking': gt 'anush_bedroom','anushroom'
-						act 'Keep talking': gt 'anushkachat', 'chat'
+						act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+						act 'Keep talking': gt 'anushkachat_city', 'chat'
 					end
 
 					act 'No, I don''t think so':
@@ -666,8 +632,8 @@ if $ARGS[0] = 'boyfriend_chat':
 						'You shake your head. "Sorry, but he''s all mine," you tell her with a grin.'
 						'She makes a tsking sound. "Too bad. If you change your mind, then let me know." You''re not sure what else to say, so you change the subject.'
 
-						act 'Stop talking': gt 'anush_bedroom','anushroom'
-						act 'Keep talking': gt 'anushkachat', 'chat'
+						act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+						act 'Keep talking': gt 'anushkachat_city', 'chat'
 					end
 				else
 					'She arches a slender brow. "Fedor? Really? Come on now, if you were going to date a jock why not go for one of the better athletes like Lazar or Ivan? I mean, <b>Fedor</b>? He''s like an Ivan-lite," she says with a giggle.'
@@ -677,8 +643,8 @@ if $ARGS[0] = 'boyfriend_chat':
 					'You roll your eyes. "I just like him, okay?" Thinking about it, you bite your lip and add "Well, maybe it is pretty big..."'
 					'She laughs. "I knew it!" She grabs her pillow and starts pretending to hump it doggystyle while talking in a gruff voice trying to sound like Fedor. "Yeah, take my big dick <<$pcs_nickname>>! Take it!" She switches to a girly voice and tries to sound like you. "Yes... yes... Fedor fuck me with your big dick... YES!" She bursts out laughing and you can''t help but to join in.'
 
-					act 'Stop talking': gt 'anush_bedroom','anushroom'
-					act 'Keep talking': gt 'anushkachat', 'chat'
+					act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+					act 'Keep talking': gt 'anushkachat_city', 'chat'
 				end
 			end
 		end
@@ -690,8 +656,8 @@ if $ARGS[0] = 'boyfriend_chat':
 			'She just stares at you. "Really? Yeah, I get that he has that bad boy vibe going for him, but you really could do better."' 
 			'She notices your facial expression from her bad mouthing your boyfriend, so she holds up her hand. "Hey, it''s your life, so do what you want, but doesn''t it feel like you''re dating Lena at the same time because of how much she talks about how great he is? At least, when she isn''t bitching about him ruining her sex life. You would think she wants to suck his dick or something," she says with a smirk. You just roll your eyes and she lets it drop.'
 
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
-			act 'Keep talking': gt 'anushkachat', 'chat'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
 		end
 	end
 	if artemQW['bf'] = 1:
@@ -716,8 +682,8 @@ if $ARGS[0] = 'boyfriend_chat':
 					'You blush slightly. "Let me think about it and talk to him. We''ll see, but I''ll let you know if we do."'
 					'She laughs. "He''s a guy. They all want to fuck two girls at once, but sure, let me know." You roll your eyes at her comment, even if it was true and decide to change the subject.'
 
-					act 'Stop talking': gt 'anush_bedroom','anushroom'
-					act 'Keep talking': gt 'anushkachat', 'chat'
+					act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+					act 'Keep talking': gt 'anushkachat_city', 'chat'
 				end
 
 				act 'I''ll ask him':
@@ -732,8 +698,8 @@ if $ARGS[0] = 'boyfriend_chat':
 					'She giggles. "He''s a boy and all boys want to fuck as much as they can. Having sex with two girls at once is like the most common fantasy they all have, and I doubt he''s any different. Besides, maybe I can teach him a new trick or two for you?" she says in a teasing tone with a wink.'
 					'You shake your head. "I doubt that, but I''ll ask him."'
 
-					act 'Stop talking': gt 'anush_bedroom','anushroom'
-					act 'Keep talking': gt 'anushkachat', 'chat'
+					act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+					act 'Keep talking': gt 'anushkachat_city', 'chat'
 				end
 
 				act 'No, I don''t think so':
@@ -744,8 +710,8 @@ if $ARGS[0] = 'boyfriend_chat':
 					'You shake your head. "Sorry, but he''s all mine," you tell her with a grin.'
 					'She makes a tsking sound. "Too bad. If you change your mind, then let me know." You''re not sure what else to say to that, so you change the subject.'
 
-					act 'Stop talking': gt 'anush_bedroom','anushroom'
-					act 'Keep talking': gt 'anushkachat', 'chat'
+					act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+					act 'Keep talking': gt 'anushkachat_city', 'chat'
 				end
 			else
 				'"You do know I have a boyfriend." you tell her.'
@@ -759,8 +725,8 @@ if $ARGS[0] = 'boyfriend_chat':
 				'She grins. "You know that game all the nerds play? D&D, or something like that?"'
 				'You shake your head. "No, we don''t, because we make love."'
 				'She makes a face like she''s about to be sick and you shove her slightly. "Cut it out." With that, you both laugh before you talk about some of the dates you and Artem have been on.'
-				act 'Stop talking': gt 'anush_bedroom','anushroom'
-				act 'Keep talking': gt 'anushkachat', 'chat'
+				act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+				act 'Keep talking': gt 'anushkachat_city', 'chat'
 			end
 		end
 	end
@@ -774,13 +740,13 @@ if $ARGS[0] = 'boyfriend_chat':
 			'She now has an inquisitive look on her face. "How did you meet him? Isn''t he a few years older than you?" she asks.'
 			'You smile at her. "I was invited to his party," you tell her, then add "He''s friends with my sister. She invited me to his party and that''s where we met." You talk about the night you met him and your first date.'
 
-			act 'Stop talking': gt 'anush_bedroom','anushroom'
-			act 'Keep talking': gt 'anushkachat', 'chat'
+			act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+			act 'Keep talking': gt 'anushkachat_city', 'chat'
 		end
 	end
 	i = 0
 	:lover_looop
-	if loverGender[i] ! 1: dynamic '	act ''<<$npc_usedname["<<$lover[i]>>"]>>'': gt ''anushkachat'', ''tell_about_generic_boyfreind'', $npc_usedname["<<$lover[i]>>"]'
+	if loverGender[i] ! 1: dynamic '	act ''<<$npc_usedname["<<$lover[i]>>"]>>'': gt ''anushkachat_city'', ''tell_about_generic_boyfreind'', $npc_usedname["<<$lover[i]>>"]'
 	i +=1
 	if i < ARRSIZE('lover'): jump 'lover_looop'
 	killvar 'i'
@@ -797,8 +763,8 @@ if $ARGS[0] = 'tell_about_generic_boyfreind':
 	'You shake your head slightly. "You''ve never met him. I just met him."'
 	'She smiles. "Just some guy you met, huh?"' 
 	'You laugh, then tell her about him.'
-	act 'Stop talking': gt 'anush_bedroom','anushroom'
-	act 'Keep talking': gt 'anushkachat', 'chat'
+	act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+	act 'Keep talking': gt 'anushkachat_city', 'chat'
 end
 
 if $ARGS[0] = 'telling_marrige_dreams':
@@ -809,8 +775,8 @@ if $ARGS[0] = 'telling_marrige_dreams':
 	'You sigh in a way only those in love can sigh. "Hopefully <<$ARGS[1]>> and I can get married soon."'
 	'She gives you a somewhat skeptical look before shrugging. "Well, best of luck with that."'
 	'You''re not sure what more to say on the topic.'
-	act 'Stop talking': gt 'anush_bedroom','anushroom'
-	act 'Keep talking': gt 'anushkachat', 'chat'
+	act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+	act 'Keep talking': gt 'anushkachat_city', 'chat'
 end
 
 
@@ -839,8 +805,8 @@ if $ARGS[0] = 'radval':
 		*nl
 		'You shrug. "I was just worried it might break up the band or cause problems."'
 		'She smiles and shakes her head. "Don''t worry about that. It has no effect on the band." You think she''s wrong, but don''t think you can change her mind, so you let it drop.'
-		act 'Stop talking': gt 'anush_bedroom','anushroom'
-		act 'Keep talking': gt 'anushkachat', 'chat'
+		act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+		act 'Keep talking': gt 'anushkachat_city', 'chat'
 	end
 	act 'Maybe':
 		*clr & cla
@@ -851,8 +817,8 @@ if $ARGS[0] = 'radval':
 		'She shrugs. "Yeah, some are, like Vitek. I could see him fucking around, but being pissed if his ''girlfriend'' was with other guys because he thinks he owns her. It would be like some other guy taking his car without asking."'
 		'You shrug back. "You don''t think they''re the same and might cause problem with the band?"'
 		'She smiles and shakes her head. "No, they''re cool and we all have an understanding. We''re friends with benefits, but that''s it. Don''t worry about it since it has no effect on the band." You think she''s wrong, but don''t think you can change her mind, so you let it drop.'
-		act 'Stop talking': gt 'anush_bedroom','anushroom'
-		act 'Keep talking': gt 'anushkachat', 'chat'
+		act 'Stop talking': gt 'anush_bedroom_city','anushroom'
+		act 'Keep talking': gt 'anushkachat_city', 'chat'
 	end
 end
 
@@ -867,7 +833,7 @@ if $ARGS[0] = 'tell_about_olu':
 	else
 		'You smile as you look at her, which perks her interest. "Well... I''m kind of seeing a black guy..." you tell her and her eyebrow arches in curiosity. "Really? Who?"'
 	end
-	'You describe Olu to her and mention he lives in your building. She nods,, apparently knowing who you mean. "Yeah, I think I''ve seen him around the courtyard before. So he lives in your building, huh? How did you meet? He looks a little old for you."'
+	'You describe Olu to her and mention he lives in your building. She nods,, apparently knowing who you mean. "Yeah, I think I''ve use to see him around Pavlovsk. So he lives in your building, huh? How did you meet? He looks a little old for you."'
 	'"Well... he''s my aunt''s boyfriend," you tell her and she gives you a shocked look. "Oh my god! Does your aunt know?"'
 	act 'Yes':
 		*clr & cla
@@ -888,39 +854,23 @@ if $ARGS[0] = 'tell_about_olu':
 			'You nod your head. "Yeah, he really is that massive and he loves fucking girls in the ass. That''s why my aunt needed a break."'
 			'She laughs. "Yeah, I bet! I''ve never seen one that big in real life, only in porn. My god, that''s crazy to think about..."'
 			if npc_sex['A82'] > 0 and DjibrilQW['nush_inv'] = 0:
-				act 'Tell her about Djibril': gt 'anushkachat', 'tell_about_djibril'
+				act 'Tell her about Djibril': gt 'anushkachat_city', 'tell_about_djibril'
 			end
-			act 'Ask her if she wants join in': gt 'anushkachat', 'invite_olu'
+			!!act 'Ask her if she wants join in': gt 'anushkachat_city', 'invite_olu'
 			act 'Tell her about your experiences with Olu':
 				*clr & cla
 				minut += 30
 				gs 'stat'
 				'<center><img <<$set_imgh>> src="images/locations/pavlovsk/resident/apartment/anushapt/anushroom/nushbed.jpg"></center>'
 				'You tell her the story of your first time with Olu and what it was like. She presses you for details, obviously finding the story a big turn on, then shares her stories of Valentin, the biggest guy she has been with. You pass the time swapping stories and giggling about your sex lives.'
-				act 'Hang out in her room': gt 'anush_bedroom','anushroom'
-				act 'Talk about something else': gt 'anushkachat', 'chat'
+				act 'Hang out in her room': gt 'anush_bedroom_city','anushroom'
+				act 'Talk about something else': gt 'anushkachat_city', 'chat'
 				if npc_sex['A82'] > 0 and DjibrilQW['nush_inv'] = 0:
-					act 'Tell her about Djibril': gt 'anushkachat', 'tell_about_djibril'
+					act 'Tell her about Djibril': gt 'anushkachat_city', 'tell_about_djibril'
 				end
 			end
 		end
 	end
-end
-
-if $ARGS[0] = 'invite_olu':
-	*clr & cla
-	OluQW['nush_inv'] = 1
-	minut += 30
-	gs 'stat'
-	'<center><img <<$set_imgh>> src="images/locations/pavlovsk/resident/apartment/anushapt/anushroom/nushbed.jpg"></center>'
-	'You give her a wide grin. "Well if you want to see it in person and find out what it feels like, I could hook you up. I can tell you want to give it a try..."'
-	'You think she might have blushed a little, but she gives a rueful smile. "Okay, yeah. The thought of having a huge black dick shoved up my ass is such a turn on. But seriously, I don''t know if I can handle it."'
-	'You laugh. "You get used to it, trust me. So you want to or what?"'
-	*nl
-	'She bites her lower lip before laughing. "Yeah, fuck it. Next time you go see him, text me and I''ll come join you if I can."'
-	'You nod. "Great, I''ll let you know." You then tell her the story of your first time with Olu and what it was like. She presses you for details, obviously finding the story a big turn on, then shares her stories of Valentin, the biggest guy she has been with. You pass the time swapping stories and giggling about your sex lives.'
-	act 'Hang out in her room': gt 'anush_bedroom','anushroom'
-	act 'Talk about something else': gt 'anushkachat', 'chat'
 end
 
 if $ARGS[0] = 'tell_about_djibril':
@@ -956,10 +906,10 @@ if $ARGS[0] = 'tell_about_djibril':
 				'She looks like she''s about to strangle you as you keep trailing off. "And then?"'
 				*nl
 				'You get into some pretty graphic details as you tell your story and are feeling more than a little turned on; by the looks of things, she is as well. Maybe you could invite her to come with you to his dorm room one time?'
-				act 'Hang out in her room': gt 'anush_bedroom','anushroom'
-				act 'Talk about something else': gt 'anushkachat', 'chat'
+				act 'Hang out in her room': gt 'anush_bedroom_city','anushroom'
+				act 'Talk about something else': gt 'anushkachat_city', 'chat'
 				if DjibrilQW['nush_inv'] = 0:
-					act 'Ask her if she wants join in': gt 'anushkachat', 'invite_djibril'
+					act 'Ask her if she wants join in': gt 'anushkachat_city', 'invite_djibril'
 				end
 			end
 		end
@@ -970,15 +920,15 @@ if $ARGS[0] = 'tell_about_djibril':
 			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/resident/apartment/anushapt/anushroom/nushbed.jpg"></center>'
 			if npc_sex['A82'] > 0:
 				'You shake your head. "No, not yet. I want to... I think."'
-				'She rolls her eyes. "You think? You already hooked up with him. When you''re in the city and feeling the itch, go see him girl."'
+				'She rolls her eyes. "You think? You already hooked up with him. Next time you''re feeling the itch, go to his dorm room and let him fuck your brains out."'
 				'You nod. "Yeah, I think I will." A thought then occurs to you; maybe you could invite her to come with you?'
 			else
 				'You shake your head. "No, not yet. I want to... I think."'
-				'She rolls her eyes. "You think? You find him attractive don''t you?" You nod your head. "Then what is there to think about? Next time you''re in the city and are feeling the itch, go see him and let him scratch it for you."'
+				'She rolls her eyes. "You think? You find him attractive don''t you?" You nod your head. "Then what is there to think about? Next time you''re feeling the itch, go to his dorm room and let him scratch it for you."'
 				'You nod. "Yeah, I think I will..."'
 			end
-			act 'Hang out in her room': gt 'anush_bedroom','anushroom'
-			act 'Talk about something else': gt 'anushkachat', 'chat'
+			act 'Hang out in her room': gt 'anush_bedroom_city','anushroom'
+			act 'Talk about something else': gt 'anushkachat_city', 'chat'
 		end
 	end
 end
@@ -1016,10 +966,10 @@ if $ARGS[0] = 'tell_about_djibril1':
 				'She looks like she''s about to strangle you as you keep trailing off. "And then?"'
 				*nl
 				'You get into some pretty graphic details as you tell your story and are feeling more than a little turned on; by the looks of things, she is as well. Maybe you could invite her to come with you to his dorm room one time?'
-				act 'Hang out in her room': gt 'anush_bedroom','anushroom'
-				act 'Talk about something else': gt 'anushkachat', 'chat'
+				act 'Hang out in her room': gt 'anush_bedroom_city','anushroom'
+				act 'Talk about something else': gt 'anushkachat_city', 'chat'
 				if DjibrilQW['nush_inv'] = 0:
-					act 'Ask her if she wants join in': gt 'anushkachat', 'invite_djibril'
+					act 'Ask her if she wants join in': gt 'anushkachat_city', 'invite_djibril'
 				end
 			end
 		end
@@ -1030,15 +980,15 @@ if $ARGS[0] = 'tell_about_djibril1':
 			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/resident/apartment/anushapt/anushroom/nushbed.jpg"></center>'
 			if npc_sex['A82'] > 0:
 				'You shake your head. "No, not yet. I want to... I think."'
-				'She rolls her eyes. "You think? You already hooked up with him. When you''re in the city and feeling the itch, go see him girl."'
+				'She rolls her eyes. "You think? You already hooked up with him. Next time you''re feeling the itch, go to his dorm room and let him fuck your brains out."'
 				'You nod. "Yeah, I think I will." A thought then occurs to you; maybe you could invite her to come with you?'
 			else
 				'You shake your head. "No, not yet. I want to... I think."'
-				'She rolls her eyes. "You think? You find him attractive don''t you?" You nod your head. "Then what is there to think about? Next time you''re in the city and are feeling the itch, go see him and let him scratch it for you."'
+				'She rolls her eyes. "You think? You find him attractive don''t you?" You nod your head. "Then what is there to think about? Next time you''re feeling the itch, go to his dorm room and let him scratch it for you."'
 				'You nod. "Yeah, I think I will..."'
 			end
-			act 'Hang out in her room': gt 'anush_bedroom','anushroom'
-			act 'Talk about something else': gt 'anushkachat', 'chat'
+			act 'Hang out in her room': gt 'anush_bedroom_city','anushroom'
+			act 'Talk about something else': gt 'anushkachat_city', 'chat'
 		end
 	end
 end
@@ -1050,12 +1000,12 @@ if $ARGS[0] = 'invite_djibril':
 	gs 'stat'
 	'<center><img <<$set_imgh>> src="images/locations/pavlovsk/resident/apartment/anushapt/anushroom/nushbed.jpg"></center>'
 	'You give her a wide grin. "I was thinking, if you want to come, we can go see Djibril at his dorm room together..."'
-	'She nods. "Okay, yeah. Hanging out with a college boy at the dorms sounds like fun. Maybe I can find a cute college boy''s dick to ride while we''re there," she says with a laugh.'
+	'She nods. "Okay, yeah. Hanging out with a college boy at the dorms sounds like fun. Maybe I can find a cute guy''s dick to ride while we''re there," she says with a laugh.'
 	'You laugh. "I''m sure they''ll be lining up to stick it in you."'
 	*nl
-	'The two of you continue talking for some time about boys, sex and even going to college. After a while, the conversation finally ends.'
-	act 'Hang out in her room': gt 'anush_bedroom','anushroom'
-	act 'Talk about something else': gt 'anushkachat', 'chat'
+	'The two of you continue talking for some time about college boys and sex. After a while, the conversation finally ends.'
+	act 'Hang out in her room': gt 'anush_bedroom_city','anushroom'
+	act 'Talk about something else': gt 'anushkachat_city', 'chat'
 end
 
 if $ARGS[0] = 'tell_about_djibril_gangbang':
@@ -1066,7 +1016,7 @@ if $ARGS[0] = 'tell_about_djibril_gangbang':
 	'<center><img <<$set_imgh>> src="images/locations/pavlovsk/resident/apartment/anushapt/anushroom/nushbed.jpg"></center>'
 	'You smile as you look at her, which perks her interest. "Remember when I told you about Djibril?" you ask and she nods while arching a brow slightly.'
 	'When you don''t immediately start talking, she shoves you slightly. "Spill already! What about him? You guys hooking up regular like?"'
-	'You shove her back slightly and grin. "Well a bunch of his black friends came over while I was there.."'
+	'You shove her back slightly and grin. "Well a bunch of his black friends came over while I was in his dorm room.."'
 	'She bites her lower lip. "So what did you do? Did you fuck all of them?"'
 	act 'Yes':
 		*clr & cla
@@ -1082,9 +1032,9 @@ if $ARGS[0] = 'tell_about_djibril_gangbang':
 		*nl
 		'She gives a look of mock surprise. "Oh my god, you dirty fucking slut! So how was it?" She''s grinning as she asks.'
 		'You get into some pretty graphic details as you tell your story and are feeling more than a little turned on; by the looks of things, she is as well. Maybe you could invite her to join in next time?'
-		act 'Hang out in her room': gt 'anush_bedroom','anushroom'
-		act 'Talk about something else': gt 'anushkachat', 'chat'
-		act 'Ask her if she wants join in': gt 'anushkachat', 'invite_djibril_gangbang'
+		act 'Hang out in her room': gt 'anush_bedroom_city','anushroom'
+		act 'Talk about something else': gt 'anushkachat_city', 'chat'
+		act 'Ask her if she wants join in': gt 'anushkachat_city', 'invite_djibril_gangbang'
 	end
 end
 
@@ -1099,8 +1049,8 @@ if $ARGS[0] = 'invite_djibril_gangbang':
 	'You laugh. "I''m sure they''ll be lining up to stick it in you."'
 	*nl
 	'The two of you go on talking for some time about boys, sex and even going to college. After a while, the conversation finally ends.'
-	act 'Hang out in her room': gt 'anush_bedroom','anushroom'
-	act 'Talk about something else': gt 'anushkachat', 'chat'
+	act 'Hang out in her room': gt 'anush_bedroom_city','anushroom'
+	act 'Talk about something else': gt 'anushkachat_city', 'chat'
 end
 
 if $ARGS[0] = 'photoshoot':
@@ -1112,7 +1062,7 @@ if $ARGS[0] = 'photoshoot':
 		'You shake your head when you realize you can''t think of a good place to take a photo of her. "I don''t know what I was thinking! I can''t think of a good location, can you?"'
 		'She thinks for a second before grinning. "Yeah, this building has a fire escape we can use. Fairly private and undisturbed."'	
 		'You grin back. "That sounds great, lead on." She giggles and leads you down the hall to the window. She opens it and you both crawl outside onto the fire escape.'
-		act 'Start photoshoot': gt 'anushkachat', 'photoshoot1'
+		act 'Start photoshoot': gt 'anushkachat_city', 'photoshoot1'
 	else
 		'You shake your head when you realize you can''t think of a good place to take a photo of her. "I don''t know what I was thinking! I can''t think of a good location, can you?"'
 		'She thinks for a second before shrugging. "No, not really."'	
@@ -1123,7 +1073,7 @@ if $ARGS[0] = 'photoshoot':
 			'<center><img <<$set_imgh>> src="images/characters/shared/headshots_main/big144.jpg"></center>'
 			'You laugh at the situation. You were excited to take some photos, but didn''t come up with any ideas on what kind of photos you actually wanted to take. "Let''s forget about this for now and go back to your room."'
 			'She shrugs. "Okay."'
-			act 'Back': gt 'anush_bedroom','anushroom'
+			act 'Back': gt 'anush_bedroom_city','anushroom'
 		end
 		act 'I should go':
 			*clr & cla
@@ -1151,7 +1101,7 @@ if $ARGS[0] = 'photoshoot1':
 		gs 'exp_gain', 'photoskl', rand(1,2)
 		gs 'stat'
 		'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/nush_model/sveta_photographer/set1/pose2.jpg"></center>'
-		'You want more and you know she loves showing off. "Come on famous model, let''s do something a little more risque!" Anushka reaches up under her skirt, pulls her panties off and tosses them at you. You snap a few more photos as she leans forward, making her skirt ride up. At this angle you can just see her pussy, but keep shooting.'
+		'You want more and you know she loves showing off. "Come on famous model, let''s do something a little more risqué!" Anushka reaches up under her skirt, pulls her panties off and tosses them at you. You snap a few more photos as she leans forward, making her skirt ride up. At this angle you can just see her pussy, but keep shooting.'
 		gs 'arousal', 'voyeur', 5
 		gs 'stat'
 		act 'Keep taking photos':
@@ -1179,7 +1129,7 @@ if $ARGS[0] = 'photoshoot1':
 						gs 'exp_gain', 'photoskl', rand(1,2)
 						gs 'stat'
 						'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/nush_model/sveta_photographer/set1/pose6.jpg"></center>'
-						'She puts her tank top back in place and spreads her legs wide, giving you a full few of her pussy. After some suggestions on poses, she moves to the outside corner of the fire escape to give you a better view of Pavlovsk behind her as you keep taking photos. "That''s it girl, give the camera some love."'
+						'She puts her tank top back in place and spreads her legs wide, giving you a full few of her pussy. After some suggestions on poses, she moves to the outside corner of the fire escape to give you a better view of city behind her as you keep taking photos. "That''s it girl, give the camera some love."'
 						gs 'arousal', 'voyeur', 5
 						gs 'stat'
 						act 'Move again':
@@ -1203,7 +1153,7 @@ if $ARGS[0] = 'photoshoot1':
 									gs 'exp_gain', 'photoskl', rand(1,2)
 									gs 'stat'
 									'<center><img <<$set_imgh>> src="images/characters/pavlovsk/school/girl/anushka/nush_model/sveta_photographer/set1/pose9.jpg"></center>'
-									'She pulls off her tank top and tosses it at you. It lands on and covers your camera and face. You pull it off and toss it aside to find her sitting with her back against the rail, on the outer corner of the fire escape. Her legs are spread wide, showing off her pussy and breasts. Only her tennis shoes and skirt bunched up around her waist remain. "That''s it," you tell her and take several more photos. There are a few hoots and lewd comments directed at you and you''re fairly certain that it''s Dan and Vasily.'
+									'She pulls off her tank top and tosses it at you. It lands on and covers your camera and face. You pull it off and toss it aside to find her sitting with her back against the rail, on the outer corner of the fire escape. Her legs are spread wide, showing off her pussy and breasts. Only her tennis shoes and skirt bunched up around her waist remain. "That''s it," you tell her and take several more photos. There are a few hoots and lewd comments directed at you from below.'
 									gs 'arousal', 'voyeur', 5
 									gs 'stat'
 									act 'Final photos':
@@ -1212,10 +1162,10 @@ if $ARGS[0] = 'photoshoot1':
 										portfolio_people[5] = 1
 										gs 'stat'
 										'<center><img <<$set_imgh>> src="images/pc/activities/photography/foto/people/5.jpg"></center>'
-										'She sits in a variety of poses, some fully exposed and others not before you finally you think you have it. She''s sitting on the outside of the fire escape, her knees together and ankles crossed with her arms wrapped around her knees, her nudity almost completely covered by her own body. Yet she looks so happy and alive, with a bustling Pavlovsk behind her. It''s the perfect image for your portfolio.'
+										'She sits in a variety of poses, some fully exposed and others not before you finally you think you have it. She''s sitting on the outside of the fire escape, her knees together and ankles crossed with her arms wrapped around her knees, her nudity almost completely covered by her own body. Yet she looks so happy and alive, with a bustling city behind her. It''s the perfect image for your portfolio.'
 										*nl
-										'With the image taken, you lower the camera. "Thanks Nush, that was amazing. You were right; this was perfect with all the natural light and Pavlovsk in the background. You can get dressed now."'
-										'She gets up and pulls her skirt back down. "My pleasure, I love modeling almost as much as I love my music." This elicits more yells from below to take it all off. You both glance down and see Vitek, Dan and Vasily leaning against a wall, drinking beers and staring up at you.'
+										'With the image taken, you lower the camera. "Thanks Nush, that was amazing. You were right; this was perfect with all the natural light and city in the background. You can get dressed now."'
+										'She gets up and pulls her skirt back down. "My pleasure, I love modeling almost as much as I love my music." This elicits more yells from below to take it all off. You both glance down and see a group of gopniks leaning against a wall, drinking beers and staring up at you.'
 										*nl
 										'Anushka leans over the railing, giving the boys an even better view of her tits as she flips them off with both hands. "Take a good long look boys, so you can go home and jerk off to the memory," she teases before grabbing her crotch. "Because that''s as close as you''re ever going to get to this!" Her remark causes the boys to yell back with crude comments, which only makes her laugh.'
 										'You put your camera away and she gets dressed as you ignore the boys. "Let''s get out of here," you tell her.'
@@ -1229,7 +1179,7 @@ if $ARGS[0] = 'photoshoot1':
 											gs 'stat'
 											'<center><img <<$set_imgh>> src="images/characters/shared/headshots_main/big144.jpg"></center>'
 											'You nod. "Sure, sounds good." The two of you walk back to her apartment talking about the photo shoot and laughing at the boys.'
-											act 'Back': gt 'anush_bedroom','anushroom'
+											act 'Back': gt 'anush_bedroom_city','anushroom'
 										end
 										act 'I should go':
 											*clr & cla
